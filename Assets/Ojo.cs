@@ -2,18 +2,28 @@ using UnityEngine;
 
 public class Ojo : MonoBehaviour
 {
-    public AudioClip impacto; // Arrastra impacto.mp3 desde Assets
+    public AudioClip impacto;   // Asignar en Inspector
+    private static AudioSource audioSourceCompartido;
+
+    private void Start()
+    {
+        // Crear AudioSource compartido si no existe
+        if (audioSourceCompartido == null)
+        {
+            GameObject go = new GameObject("AudioSourceOjos");
+            audioSourceCompartido = go.AddComponent<AudioSource>();
+            audioSourceCompartido.spatialBlend = 0f; // 2D
+            audioSourceCompartido.volume = 1f;       // Volumen máximo
+            DontDestroyOnLoad(go);                    // Opcional: persiste entre escenas
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Comprobar si el objeto que colisiona tiene el tag "Pelota"
-        if (collision.gameObject.CompareTag("Pelota"))
+        if (collision.gameObject.CompareTag("Pelota") && impacto != null)
         {
-            // Reproducir sonido en la posición del ojo
-            if (impacto != null)
-            {
-                AudioSource.PlayClipAtPoint(impacto, transform.position);
-            }
+            // Reproducir el sonido
+            audioSourceCompartido.PlayOneShot(impacto, 1f);
 
             // Destruir el ojo
             Destroy(gameObject);

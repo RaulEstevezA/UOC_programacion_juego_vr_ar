@@ -3,67 +3,69 @@
 public class player : MonoBehaviour
 {
     [Header("Configuración del movimiento")]
-    public float limiteX = 8f;        // Límite horizontal (ajustar según escena)
-    public float velocidad = 10f;     // Velocidad de movimiento
-    public float suavizado = 10f;     // Factor de interpolación (mayor = más suave)
+    public float velocidad = 10f;
+    public float suavizado = 10f;
 
     private Vector3 posicionInicial;
-    private float objetivoX;           // Posición objetivo horizontal
+    private float objetivoX;
+    private float limiteXReal;
 
     void Start()
     {
         posicionInicial = transform.position;
         objetivoX = posicionInicial.x;
+
+        // 🔹 Calcular el límite horizontal visible según la cámara
+        float mitadPantalla = Camera.main.orthographicSize * Camera.main.aspect;
+        float mitadAnchoPaddle = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        limiteXReal = mitadPantalla - mitadAnchoPaddle;
     }
 
     void Update()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE
-        // 💻 En PC: mover con teclado o ratón
         MoverEnPC();
 #else
-        // 📱 En Android: mover con el dedo
         MoverEnAndroid();
 #endif
 
-        // 🔹 Movimiento suavizado hacia la posición objetivo
+        // Movimiento suavizado
         float nuevaX = Mathf.Lerp(transform.position.x, objetivoX, Time.deltaTime * suavizado);
         transform.position = new Vector3(nuevaX, posicionInicial.y, posicionInicial.z);
     }
 
-    // --- Movimiento con teclado o ratón ---
     void MoverEnPC()
     {
         float movimiento = 0f;
 
-        // Flechas de dirección
         if (Input.GetKey(KeyCode.LeftArrow))
             movimiento = -1f;
         else if (Input.GetKey(KeyCode.RightArrow))
             movimiento = 1f;
 
-        // Movimiento directo con el ratón (opcional)
         if (Input.GetMouseButton(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            objetivoX = Mathf.Clamp(mousePos.x, -limiteX, limiteX);
+            objetivoX = Mathf.Clamp(mousePos.x, -limiteXReal, limiteXReal);
         }
         else
         {
-            // Movimiento con teclado (incremental)
             objetivoX += movimiento * velocidad * Time.deltaTime;
-            objetivoX = Mathf.Clamp(objetivoX, -limiteX, limiteX);
+            objetivoX = Mathf.Clamp(objetivoX, -limiteXReal, limiteXReal);
         }
     }
 
-    // --- Movimiento con el dedo (Android) ---
     void MoverEnAndroid()
     {
         if (Input.touchCount > 0)
         {
             Touch toque = Input.GetTouch(0);
-            Vector3 toquePos = Camera.main.ScreenToWorldPoint(toque.position);
-            objetivoX = Mathf.Clamp(toquePos.x, -limiteX, limiteX);
+            Vector3 toquePos = Camera.main.ScreenToWorldPoint(new Vector3(toque.position.x, toque.position.y, 10f));
+            transform.position = new Vector3(
+                Mathf.Clamp(toquePos.x, -limiteXReal, limiteXReal),
+                posicionInicial.y,
+                posicionInicial.z
+            );
         }
     }
 }
