@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &28730503
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &176284488
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &214576768
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &216573363
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &241301994
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &271599989
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &306218332
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -577,8 +577,8 @@ Transform:
   m_GameObject: {fileID: 311225396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0317, y: -0.0634, z: 0}
-  m_LocalScale: {x: 7.1728344, y: 3.6719055, z: 1}
+  m_LocalPosition: {x: 0.0567, y: -0.1134, z: 0}
+  m_LocalScale: {x: 7.587083, y: 4.4499283, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &386435986
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &493955448
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -845,7 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &531679245
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &558862299
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -953,7 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &578595889
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &597546041
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &656758137
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &666993618
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &696098475
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1552,7 +1552,7 @@ Transform:
   m_GameObject: {fileID: 791918306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.64, y: -0, z: 0}
+  m_LocalPosition: {x: -12, y: 0.1, z: 0}
   m_LocalScale: {x: 0.92929, y: 10.45715, z: 0.92929}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1003900512
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1062590544
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1169150932
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1210261049
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1878,7 +1878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1233588712
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1932,7 +1932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1247252958
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1986,7 +1986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1359264115
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1386024567
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1388413468
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1392877468
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2202,7 +2202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1408931619
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1409334329
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1436663129
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2364,7 +2364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1454747218
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2418,7 +2418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1506751188
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2621,6 +2621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 10
+  velocidadMaxima: 7
 --- !u!1 &1516561921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 85447273893561178, guid: e411e099475792147a0b63f39f6d32a2, type: 3}
@@ -2638,7 +2639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1516561925
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2692,7 +2693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1530378619
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2746,7 +2747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1542229338
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2800,7 +2801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1588198042
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2854,7 +2855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1646844763
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2908,7 +2909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1663327224
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2962,7 +2963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1706012609
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3016,7 +3017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1732089805
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3070,7 +3071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1758760136
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3124,7 +3125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1763144150
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3178,7 +3179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1801364037
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3232,7 +3233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1850580808
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3286,7 +3287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1853589067
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3340,7 +3341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1854968288
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3394,7 +3395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1873519918
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3448,20 +3449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
---- !u!114 &1884581401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884581399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1884581402
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3551,7 +3539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1903888155
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3605,7 +3593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1909325697
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3659,7 +3647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1978541055
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3713,7 +3701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1980130547
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3878,7 +3866,7 @@ Transform:
   m_GameObject: {fileID: 1993243777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.59, y: -0.04, z: 0}
+  m_LocalPosition: {x: 12.2, y: -0.04, z: 0}
   m_LocalScale: {x: 0.92929, y: 10.45715, z: 0.92929}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3901,7 +3889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &1999128402
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3955,7 +3943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &2018342035
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4009,7 +3997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &2024914324
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4221,7 +4209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4cd44a2ecaac04a8e7aa25a1974790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limiteX: 8
   velocidad: 10
   suavizado: 10
 --- !u!1 &2125622393 stripped
@@ -4241,7 +4228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &2125622397
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4295,7 +4282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55841968c47caa740bdd270ef48c5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: {fileID: 0}
+  impacto: {fileID: 8300000, guid: 5af370c71ea518c4ab16ecab37ac6660, type: 3}
 --- !u!58 &2146734074
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6785,9 +6772,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9071497455905310777, guid: 37bfbccce0f6a6c41a3267b6f41e7005, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1884581402}
-    - targetCorrespondingSourceObject: {fileID: 9071497455905310777, guid: 37bfbccce0f6a6c41a3267b6f41e7005, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1884581401}
     - targetCorrespondingSourceObject: {fileID: 9071497455905310777, guid: 37bfbccce0f6a6c41a3267b6f41e7005, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1884581400}
