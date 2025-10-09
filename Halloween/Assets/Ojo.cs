@@ -27,6 +27,9 @@ public class Ojo : MonoBehaviour
 
             // Destruir el ojo
             Destroy(gameObject);
+            GameObject.FindWithTag("Punt")
+               .GetComponent<PuntuacionManager>()
+               .SumarPuntos(100);
         }
     }
 }
