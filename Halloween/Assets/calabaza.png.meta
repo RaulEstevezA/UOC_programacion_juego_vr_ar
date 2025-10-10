@@ -145,7 +145,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      calabaza_0: -4044648767452051171
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

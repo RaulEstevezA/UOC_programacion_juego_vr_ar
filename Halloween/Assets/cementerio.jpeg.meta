@@ -145,7 +145,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cementerio_0: -1446418641494592349
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
