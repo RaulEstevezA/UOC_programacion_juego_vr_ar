@@ -4,12 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - player
-  - Murosup
-  - MuroIzq
-  - MuroDer
-  - Pelota
-  - Muroinf
+  - Chestnut
+  - Rock
+  - Jugador
   layers:
   - Default
   - TransparentFX
@@ -46,6 +43,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 579359073
+    locked: 0
+  - name: World
+    uniqueID: 1227576587
+    locked: 0
+  - name: Player
+    uniqueID: 1636013353
+    locked: 0
+  - name: UI
+    uniqueID: 1131345803
     locked: 0
   m_RenderingLayers:
   - Default
