@@ -61,11 +61,11 @@ public class player : MonoBehaviour
         {
             Touch toque = Input.GetTouch(0);
             Vector3 toquePos = Camera.main.ScreenToWorldPoint(new Vector3(toque.position.x, toque.position.y, 10f));
-            transform.position = new Vector3(
-                Mathf.Clamp(toquePos.x, -limiteXReal, limiteXReal),
-                posicionInicial.y,
-                posicionInicial.z
-            );
+
+            // Solo actualizamos objetivoX
+            objetivoX = Mathf.Clamp(toquePos.x, -limiteXReal, limiteXReal);
         }
+        // Si no hay toque, no tocamos objetivoX, así el paddle se queda donde estaba
     }
+
 }
