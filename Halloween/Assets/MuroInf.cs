@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class MuroInferior : MonoBehaviour
 {
-    public int vidasRestantes = 2; // solo las bolas que están "de reserva"
+    public int vidasRestantes = 2;
     public GameObject Pelota;
+    public GameObject txtGameOver;
+
     private Vector3 spawnPosicionInicial;
     private bool reiniciando = false;
 
     private void Start()
     {
         spawnPosicionInicial = Pelota.transform.position;
+        if (txtGameOver != null)
+            txtGameOver.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,20 +25,17 @@ public class MuroInferior : MonoBehaviour
         if (vidasRestantes > 0)
         {
             reiniciando = true;
-
-            // Oculta la vida que queda
             OcultarIcono(vidasRestantes);
-
-            // Resta una vida de reserva
             vidasRestantes--;
-
             StartCoroutine(ReiniciarPelota());
         }
         else
         {
-            // Última bola perdida
             Debug.Log("Game Over");
             Pelota.SetActive(false);
+            if (txtGameOver != null)
+                txtGameOver.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
@@ -56,7 +58,6 @@ public class MuroInferior : MonoBehaviour
     {
         Pelota.SetActive(false);
         yield return new WaitForSeconds(3f);
-
         Pelota.transform.position = spawnPosicionInicial;
         Pelota.SetActive(true);
 
