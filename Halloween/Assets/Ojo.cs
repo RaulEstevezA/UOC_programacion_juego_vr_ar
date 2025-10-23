@@ -29,7 +29,7 @@ public class Ojo : MonoBehaviour
             Destroy(gameObject);
             GameObject.FindWithTag("Punt")
                .GetComponent<PuntuacionManager>()
-               .SumarPuntos(100);
+               .SumarPuntos(1);
         }
     }
 }

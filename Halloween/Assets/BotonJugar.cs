@@ -6,7 +6,7 @@ public class BotonJugar : MonoBehaviour
 {
     void Start()
     {
-        Button btn = GetComponent<Button>(); // Toma el Button del mismo GameObject
-        btn.onClick.AddListener(() => SceneManager.LoadScene("SampleScene"));
+        Button btn = GetComponent<Button>(); 
+        btn.onClick.AddListener(() => SceneManager.LoadScene("Halloween"));
     }
 }

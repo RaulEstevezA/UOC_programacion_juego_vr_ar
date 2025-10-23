@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class MuroInferior : MonoBehaviour
 {
@@ -10,52 +11,58 @@ public class MuroInferior : MonoBehaviour
 
     private float tiempoRestante;
     private bool juegoTerminado = false;
-    private Vector3 spawnPosicionInicial;
+    private bool parpadeando = false;
 
     private void Start()
     {
         tiempoRestante = tiempoMaximo;
-        spawnPosicionInicial = Pelota.transform.position;
-
         if (txtGameOver != null)
             txtGameOver.SetActive(false);
-
         if (txtTiempo != null)
-            txtTiempo.text = Mathf.Ceil(tiempoRestante).ToString();
+            txtTiempo.text = "Tiempo restante: " + Mathf.Ceil(tiempoRestante);
     }
 
     private void Update()
     {
         if (juegoTerminado) return;
 
-        tiempoRestante -= Time.unscaledDeltaTime;
+        tiempoRestante -= Time.deltaTime;
 
         if (txtTiempo != null)
-            txtTiempo.text = Mathf.Ceil(tiempoRestante).ToString();
+            txtTiempo.text = "Tiempo restante: " + Mathf.Ceil(tiempoRestante);
+
+        if (tiempoRestante <= 10 && !parpadeando)
+        {
+            parpadeando = true;
+            StartCoroutine(ParpadearTexto());
+        }
 
         if (tiempoRestante <= 0)
-            JuegoTerminado("Se acabó el tiempo");
+            FinDelJuego();
+    }
+
+    private IEnumerator ParpadearTexto()
+    {
+        while (!juegoTerminado)
+        {
+            txtTiempo.enabled = !txtTiempo.enabled;
+            txtTiempo.color = Color.red;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (juegoTerminado) return;
-
-        if (other.CompareTag("Pelota"))
-        {
-            JuegoTerminado("Pelota perdida");
-        }
+        if (!other.CompareTag("Pelota") || juegoTerminado) return;
+        FinDelJuego();
     }
 
-    private void JuegoTerminado(string motivo)
+    private void FinDelJuego()
     {
         juegoTerminado = true;
         Pelota.SetActive(false);
-
         if (txtGameOver != null)
             txtGameOver.SetActive(true);
-
         Time.timeScale = 0f;
-        Debug.Log("Game Over: " + motivo);
     }
 }
