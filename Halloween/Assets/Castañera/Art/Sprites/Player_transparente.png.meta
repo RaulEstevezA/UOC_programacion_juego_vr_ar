@@ -1,0 +1,2351 @@
+fileFormatVersion: 2
+guid: 7abd20ee905dcc94eac071c0e19b4e72
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1716703781810656689
+    second: Player_transparente_0
+  - first:
+      213: -6707080880272780794
+    second: Player_transparente_1
+  - first:
+      213: -5606147082595943858
+    second: Player_transparente_2
+  - first:
+      213: 8722362707009127232
+    second: Player_transparente_3
+  - first:
+      213: 5184273525514866593
+    second: Player_transparente_4
+  - first:
+      213: 6792991515821693382
+    second: Player_transparente_5
+  - first:
+      213: 1387085223461455459
+    second: Player_transparente_6
+  - first:
+      213: 2757616865451342112
+    second: Player_transparente_7
+  - first:
+      213: 4269159125357826617
+    second: Player_transparente_8
+  - first:
+      213: 2091762127502131792
+    second: Player_transparente_9
+  - first:
+      213: 7329585554562362187
+    second: Player_transparente_10
+  - first:
+      213: -4721959436859915220
+    second: Player_transparente_11
+  - first:
+      213: 4244667648183049672
+    second: Player_transparente_12
+  - first:
+      213: -584917981847229064
+    second: Player_transparente_13
+  - first:
+      213: -4613539882944313066
+    second: Player_transparente_14
+  - first:
+      213: 8195649730043416546
+    second: Player_transparente_15
+  - first:
+      213: 6402573482230910152
+    second: Player_transparente_16
+  - first:
+      213: -2779539603353266397
+    second: Player_transparente_17
+  - first:
+      213: -781269918701417809
+    second: Player_transparente_18
+  - first:
+      213: -6815890745294866998
+    second: Player_transparente_19
+  - first:
+      213: -1711784885877524545
+    second: Player_transparente_20
+  - first:
+      213: 582217570131491880
+    second: Player_transparente_21
+  - first:
+      213: 5309762212953877510
+    second: Player_transparente_22
+  - first:
+      213: 2661734251033398863
+    second: Player_transparente_23
+  - first:
+      213: 2344863886290109731
+    second: Player_transparente_24
+  - first:
+      213: -8809399896344957117
+    second: Player_transparente_25
+  - first:
+      213: 1366710948056321790
+    second: Player_transparente_26
+  - first:
+      213: 2227184320329205499
+    second: Player_transparente_27
+  - first:
+      213: -4532919891320868620
+    second: Player_transparente_28
+  - first:
+      213: -4762834355670700638
+    second: Player_transparente_29
+  - first:
+      213: -5893668244939895375
+    second: Player_transparente_30
+  - first:
+      213: 5489935007259106329
+    second: Player_transparente_31
+  - first:
+      213: 744561091786281974
+    second: Player_transparente_32
+  - first:
+      213: 6199800180695447815
+    second: Player_transparente_33
+  - first:
+      213: -2074527415095071501
+    second: Player_transparente_34
+  - first:
+      213: -4188664498124448344
+    second: Player_transparente_35
+  - first:
+      213: 354014097983172018
+    second: Player_transparente_36
+  - first:
+      213: 8105650988637319574
+    second: Player_transparente_37
+  - first:
+      213: -5439574938496355990
+    second: Player_transparente_38
+  - first:
+      213: 5647600803270184166
+    second: Player_transparente_39
+  - first:
+      213: 5860887902035225246
+    second: Player_transparente_40
+  - first:
+      213: 4814820712004976763
+    second: Player_transparente_41
+  - first:
+      213: 5794954522456517109
+    second: Player_transparente_42
+  - first:
+      213: 7017243338012693760
+    second: Player_transparente_43
+  - first:
+      213: 3355047387705950102
+    second: Player_transparente_44
+  - first:
+      213: -8054038858142882195
+    second: Player_transparente_45
+  - first:
+      213: 7037661946246481229
+    second: Player_transparente_46
+  - first:
+      213: -8878150349463072104
+    second: Player_transparente_47
+  - first:
+      213: -4914477809006011178
+    second: Player_transparente_48
+  - first:
+      213: 966428372730945174
+    second: Player_transparente_49
+  - first:
+      213: 7296342577204032759
+    second: Player_transparente_50
+  - first:
+      213: 343546370919495408
+    second: Player_transparente_51
+  - first:
+      213: 1923571622915015102
+    second: Player_transparente_52
+  - first:
+      213: 3084667087149209993
+    second: Player_transparente_53
+  - first:
+      213: 1560465648575849861
+    second: Player_transparente_54
+  - first:
+      213: -8386351570236604007
+    second: Player_transparente_55
+  - first:
+      213: 3937907692261949451
+    second: Player_transparente_56
+  - first:
+      213: -3878661814920401391
+    second: Player_transparente_57
+  - first:
+      213: -155502568157909188
+    second: Player_transparente_58
+  - first:
+      213: 3002506070564022708
+    second: Player_transparente_59
+  - first:
+      213: -7406907890839687069
+    second: Player_transparente_60
+  - first:
+      213: 4945761509988994471
+    second: Player_transparente_61
+  - first:
+      213: -5359029595989080673
+    second: Player_transparente_62
+  - first:
+      213: -4888756718955230883
+    second: Player_transparente_63
+  - first:
+      213: 7870207406190053087
+    second: Player_transparente_64
+  - first:
+      213: 9146922468349111176
+    second: Player_transparente_65
+  - first:
+      213: -2204410929183621812
+    second: Player_transparente_66
+  - first:
+      213: -8965351093506285191
+    second: Player_transparente_67
+  - first:
+      213: 5043450464014539405
+    second: Player_transparente_68
+  - first:
+      213: 5241720543772062813
+    second: Player_transparente_69
+  - first:
+      213: -3301654818628028973
+    second: Player_transparente_70
+  - first:
+      213: 2501152410085774525
+    second: Player_transparente_71
+  - first:
+      213: 4195323744072473884
+    second: Player_transparente_72
+  - first:
+      213: 5683596449228585891
+    second: Player_transparente_73
+  - first:
+      213: 6381794021260522902
+    second: Player_transparente_74
+  - first:
+      213: -2169868266966717295
+    second: Player_transparente_75
+  - first:
+      213: 1871915303110432450
+    second: Player_transparente_76
+  - first:
+      213: 2088217116306775757
+    second: Player_transparente_77
+  - first:
+      213: 9027562209381898359
+    second: Player_transparente_78
+  - first:
+      213: -846385651413235823
+    second: Player_transparente_79
+  - first:
+      213: -6047387389545477060
+    second: Player_transparente_80
+  - first:
+      213: 492845441843239296
+    second: Player_transparente_81
+  - first:
+      213: -3138486134155886212
+    second: Player_transparente_82
+  - first:
+      213: -8961515310481641275
+    second: Player_transparente_83
+  - first:
+      213: -4898072317153859140
+    second: Player_transparente_84
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_transparente_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 292
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b5d46b7ef4f2d710800000000000000
+      internalID: 1716703781810656689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 292
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 602d68b9979abe2a0800000000000000
+      internalID: -6707080880272780794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 292
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4ab6475ee6f232b0800000000000000
+      internalID: -5606147082595943858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 292
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043c4614bae0c0970800000000000000
+      internalID: 8722362707009127232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 293
+        width: 21
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1af86c2dd4d32f740800000000000000
+      internalID: 5184273525514866593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_5
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 292
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c95bc6facd854e50800000000000000
+      internalID: 6792991515821693382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_6
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 292
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3660d9169aaef3310800000000000000
+      internalID: 1387085223461455459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_7
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 292
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0297adbbde5054620800000000000000
+      internalID: 2757616865451342112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_8
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 292
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93212940b991f3b30800000000000000
+      internalID: 4269159125357826617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_9
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 293
+        width: 21
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0524164829e670d10800000000000000
+      internalID: 2091762127502131792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_10
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 253
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b26826a3be7b560800000000000000
+      internalID: 7329585554562362187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_11
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 252
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c24492209ea387eb0800000000000000
+      internalID: -4721959436859915220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_12
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 252
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cd1b8f9cb618ea30800000000000000
+      internalID: 4244667648183049672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 252
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87de14dc134f1e7f0800000000000000
+      internalID: -584917981847229064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_14
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 252
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 619c1088be969ffb0800000000000000
+      internalID: -4613539882944313066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_15
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 255
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef83cec10cccb170800000000000000
+      internalID: 8195649730043416546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_16
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 254
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cc85b8e8a28ad850800000000000000
+      internalID: 6402573482230910152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_17
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 253
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3279ff615771d69d0800000000000000
+      internalID: -2779539603353266397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_18
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 253
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa8a16f52f5825f0800000000000000
+      internalID: -781269918701417809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_19
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 253
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac5b3d2ba771961a0800000000000000
+      internalID: -6815890745294866998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_20
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 214
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb7336937b48e38e0800000000000000
+      internalID: -1711784885877524545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_21
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 214
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82cbda99bc3741800800000000000000
+      internalID: 582217570131491880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_22
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 213
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c68e0b99010b940800000000000000
+      internalID: 5309762212953877510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_23
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 212
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e0657e23160f420800000000000000
+      internalID: 2661734251033398863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 213
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 325c6fce741aa8020800000000000000
+      internalID: 2344863886290109731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_25
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 213
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34feefde779beb580800000000000000
+      internalID: -8809399896344957117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_26
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 213
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efec889bd5887f210800000000000000
+      internalID: 1366710948056321790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_27
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 212
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf6ca86d65c88ee10800000000000000
+      internalID: 2227184320329205499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_28
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 211
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f074821065d711c0800000000000000
+      internalID: -4532919891320868620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_29
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 211
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ada83a536307edb0800000000000000
+      internalID: -4762834355670700638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 165
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bd8b5c05fb753ea0800000000000000
+      internalID: -5893668244939895375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_31
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 165
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91c19ab5dca203c40800000000000000
+      internalID: 5489935007259106329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_32
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 165
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f39f7d3e56355a00800000000000000
+      internalID: 744561091786281974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_33
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 165
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70931c89a6d1a0650800000000000000
+      internalID: 6199800180695447815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_34
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 166
+        width: 21
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fce27aae4cc533e0800000000000000
+      internalID: -2074527415095071501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_35
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 163
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ad900ad4dfded5c0800000000000000
+      internalID: -4188664498124448344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_36
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 163
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bd64cb42f5b9e400800000000000000
+      internalID: 354014097983172018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_37
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 163
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 691750be0ae0d7070800000000000000
+      internalID: 8105650988637319574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_38
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 163
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a61becdd96fb284b0800000000000000
+      internalID: -5439574938496355990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_39
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 164
+        width: 21
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ec4120220f406e40800000000000000
+      internalID: 5647600803270184166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_40
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 126
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9aa13d9e7e065150800000000000000
+      internalID: 5860887902035225246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_41
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 125
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7000447deda1d240800000000000000
+      internalID: 4814820712004976763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_42
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 125
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f960986f60db6050800000000000000
+      internalID: 5794954522456517109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_43
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 125
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00519b013a1426160800000000000000
+      internalID: 7017243338012693760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_44
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 125
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69fb0d4c2d58f8e20800000000000000
+      internalID: 3355047387705950102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_45
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 124
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d666335a45e4a3090800000000000000
+      internalID: -8054038858142882195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_46
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 123
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d454e43c04ccaa160800000000000000
+      internalID: 7037661946246481229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_47
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 123
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8925ebdab497ac480800000000000000
+      internalID: -8878150349463072104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_48
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 123
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc18a188744ccbb0800000000000000
+      internalID: -4914477809006011178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_49
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 123
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69e9c711c71796d00800000000000000
+      internalID: 966428372730945174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_50
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 86
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4fdc19ae0d14560800000000000000
+      internalID: 7296342577204032759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_51
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 86
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f6f78aaa9584c400800000000000000
+      internalID: 343546370919495408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_52
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 85
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb10fd31336e1ba10800000000000000
+      internalID: 1923571622915015102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_53
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 84
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9891edb5f50feca20800000000000000
+      internalID: 3084667087149209993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_54
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 84
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 585209b5d33e7a510800000000000000
+      internalID: 1560465648575849861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_55
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 85
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 991028efda1bd9b80800000000000000
+      internalID: -8386351570236604007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_56
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 85
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b004d83ae2246a630800000000000000
+      internalID: 3937907692261949451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_57
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 84
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11e2ccd11a93c2ac0800000000000000
+      internalID: -3878661814920401391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_58
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 83
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3f6947fc3b87ddf0800000000000000
+      internalID: -155502568157909188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_59
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 84
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b92cebfc5b0ba920800000000000000
+      internalID: 3002506070564022708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_60
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 27
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360767a4480653990800000000000000
+      internalID: -7406907890839687069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_61
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 14
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ad81bab3efd2a440800000000000000
+      internalID: 4945761509988994471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_62
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 14
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f95044ec9f6e0a5b0800000000000000
+      internalID: -5359029595989080673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_63
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 14
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d598e557aa5a72cb0800000000000000
+      internalID: -4888756718955230883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_64
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 14
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd64b9210f7983d60800000000000000
+      internalID: 7870207406190053087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_65
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 14
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88becf1c58560fe70800000000000000
+      internalID: 9146922468349111176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_66
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 14
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4d750b70fb5861e0800000000000000
+      internalID: -2204410929183621812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_67
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 14
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 971e5e05eaca49380800000000000000
+      internalID: -8965351093506285191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_68
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 14
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a9dd5c97fedf540800000000000000
+      internalID: 5043450464014539405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_69
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 14
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d54b66f00155eb840800000000000000
+      internalID: 5241720543772062813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_70
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 14
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d538b47f6a2e22d0800000000000000
+      internalID: -3301654818628028973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_71
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 14
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db456448dd0e5b220800000000000000
+      internalID: 2501152410085774525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_72
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 14
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d933ba7b8c83a30800000000000000
+      internalID: 4195323744072473884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_73
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3abf0fa8bd030ee40800000000000000
+      internalID: 5683596449228585891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_74
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695f1f2a9dfa09850800000000000000
+      internalID: 6381794021260522902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_75
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c6e02ce4413e1e0800000000000000
+      internalID: -2169868266966717295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_76
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 3
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c6d383ec016af910800000000000000
+      internalID: 1871915303110432450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_77
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 3
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dce1b574766dafc10800000000000000
+      internalID: 2088217116306775757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_78
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 3
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 778d2f5dff7584d70800000000000000
+      internalID: 9027562209381898359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_79
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 197c6800cb80144f0800000000000000
+      internalID: -846385651413235823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_80
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 3
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c07faa53d531ca0800000000000000
+      internalID: -6047387389545477060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_81
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 3
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0899c327150f6d600800000000000000
+      internalID: 492845441843239296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_82
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 3
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7146294d7bd174d0800000000000000
+      internalID: -3138486134155886212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_83
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 3
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c074852e4d42a380800000000000000
+      internalID: -8961515310481641275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_transparente_84
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 3
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb9aedbbd2d860cb0800000000000000
+      internalID: -4898072317153859140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Player_transparente_0: 1716703781810656689
+      Player_transparente_1: -6707080880272780794
+      Player_transparente_10: 7329585554562362187
+      Player_transparente_11: -4721959436859915220
+      Player_transparente_12: 4244667648183049672
+      Player_transparente_13: -584917981847229064
+      Player_transparente_14: -4613539882944313066
+      Player_transparente_15: 8195649730043416546
+      Player_transparente_16: 6402573482230910152
+      Player_transparente_17: -2779539603353266397
+      Player_transparente_18: -781269918701417809
+      Player_transparente_19: -6815890745294866998
+      Player_transparente_2: -5606147082595943858
+      Player_transparente_20: -1711784885877524545
+      Player_transparente_21: 582217570131491880
+      Player_transparente_22: 5309762212953877510
+      Player_transparente_23: 2661734251033398863
+      Player_transparente_24: 2344863886290109731
+      Player_transparente_25: -8809399896344957117
+      Player_transparente_26: 1366710948056321790
+      Player_transparente_27: 2227184320329205499
+      Player_transparente_28: -4532919891320868620
+      Player_transparente_29: -4762834355670700638
+      Player_transparente_3: 8722362707009127232
+      Player_transparente_30: -5893668244939895375
+      Player_transparente_31: 5489935007259106329
+      Player_transparente_32: 744561091786281974
+      Player_transparente_33: 6199800180695447815
+      Player_transparente_34: -2074527415095071501
+      Player_transparente_35: -4188664498124448344
+      Player_transparente_36: 354014097983172018
+      Player_transparente_37: 8105650988637319574
+      Player_transparente_38: -5439574938496355990
+      Player_transparente_39: 5647600803270184166
+      Player_transparente_4: 5184273525514866593
+      Player_transparente_40: 5860887902035225246
+      Player_transparente_41: 4814820712004976763
+      Player_transparente_42: 5794954522456517109
+      Player_transparente_43: 7017243338012693760
+      Player_transparente_44: 3355047387705950102
+      Player_transparente_45: -8054038858142882195
+      Player_transparente_46: 7037661946246481229
+      Player_transparente_47: -8878150349463072104
+      Player_transparente_48: -4914477809006011178
+      Player_transparente_49: 966428372730945174
+      Player_transparente_5: 6792991515821693382
+      Player_transparente_50: 7296342577204032759
+      Player_transparente_51: 343546370919495408
+      Player_transparente_52: 1923571622915015102
+      Player_transparente_53: 3084667087149209993
+      Player_transparente_54: 1560465648575849861
+      Player_transparente_55: -8386351570236604007
+      Player_transparente_56: 3937907692261949451
+      Player_transparente_57: -3878661814920401391
+      Player_transparente_58: -155502568157909188
+      Player_transparente_59: 3002506070564022708
+      Player_transparente_6: 1387085223461455459
+      Player_transparente_60: -7406907890839687069
+      Player_transparente_61: 4945761509988994471
+      Player_transparente_62: -5359029595989080673
+      Player_transparente_63: -4888756718955230883
+      Player_transparente_64: 7870207406190053087
+      Player_transparente_65: 9146922468349111176
+      Player_transparente_66: -2204410929183621812
+      Player_transparente_67: -8965351093506285191
+      Player_transparente_68: 5043450464014539405
+      Player_transparente_69: 5241720543772062813
+      Player_transparente_7: 2757616865451342112
+      Player_transparente_70: -3301654818628028973
+      Player_transparente_71: 2501152410085774525
+      Player_transparente_72: 4195323744072473884
+      Player_transparente_73: 5683596449228585891
+      Player_transparente_74: 6381794021260522902
+      Player_transparente_75: -2169868266966717295
+      Player_transparente_76: 1871915303110432450
+      Player_transparente_77: 2088217116306775757
+      Player_transparente_78: 9027562209381898359
+      Player_transparente_79: -846385651413235823
+      Player_transparente_8: 4269159125357826617
+      Player_transparente_80: -6047387389545477060
+      Player_transparente_81: 492845441843239296
+      Player_transparente_82: -3138486134155886212
+      Player_transparente_83: -8961515310481641275
+      Player_transparente_84: -4898072317153859140
+      Player_transparente_9: 2091762127502131792
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

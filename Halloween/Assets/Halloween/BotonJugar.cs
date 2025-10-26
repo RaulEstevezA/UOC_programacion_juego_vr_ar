@@ -7,6 +7,6 @@ public class BotonJugar : MonoBehaviour
     void Start()
     {
         Button btn = GetComponent<Button>(); 
-        btn.onClick.AddListener(() => SceneManager.LoadScene("Halloween"));
+        btn.onClick.AddListener(() => SceneManager.LoadScene("SelectorModo"));
     }
 }
