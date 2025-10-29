@@ -11,4 +11,8 @@ public class PuntuacionManager : MonoBehaviour
         puntuacion += cantidad;
         textoPuntos.text = puntuacion.ToString();
     }
+    public int ObtenerPuntuacion()
+    {
+        return puntuacion;
+    }
 }

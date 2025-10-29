@@ -21,8 +21,6 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Halloween/Scenes/Menu.unity
   - m_enabled: 1
-    m_path: Assets/Halloween/Scenes/Halloween.unity
-  - m_enabled: 1
     m_path: "Assets/Casta\xF1era/Scenes/Castanyera_scene.unity"
   - m_enabled: 1
     m_path: Assets/Halloween/Scenes/SelectorModo.unity

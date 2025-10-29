@@ -61,8 +61,25 @@ public class MuroInferior : MonoBehaviour
     {
         juegoTerminado = true;
         Pelota.SetActive(false);
+
         if (txtGameOver != null)
             txtGameOver.SetActive(true);
-        Time.timeScale = 0f;
+
+        // Obtener la puntuación parcial de este minijuego
+        PuntuacionManager pm = PuntuacionManager.FindFirstObjectByType<PuntuacionManager>();
+
+        int puntosParciales = 0;
+        if (pm != null)
+        {
+            puntosParciales = pm.ObtenerPuntuacion(); // guardamos la puntuación parcial
+        }
+        PuntosGlobales.puntosParciales = puntosParciales;
+
+
+        // Puedes usar puntosParciales más adelante cuando crees la escena de resultados
+        // ResultadoUI.puntosDelJuego = puntosParciales;
+
+        Time.timeScale = 0f; // pausa el juego
     }
+
 }
