@@ -7,6 +7,7 @@ public class MuroInferior : MonoBehaviour
     public GameObject Pelota;
     public GameObject txtGameOver;
     public TMP_Text txtTiempo;
+    public TMP_Text txtResultadoFinal; 
     public float tiempoMaximo = 60f;
 
     private float tiempoRestante;
@@ -16,6 +17,8 @@ public class MuroInferior : MonoBehaviour
     private void Start()
     {
         tiempoRestante = tiempoMaximo;
+        if (txtResultadoFinal != null)
+            txtResultadoFinal.gameObject.SetActive(false); 
         if (txtGameOver != null)
             txtGameOver.SetActive(false);
         if (txtTiempo != null)
@@ -31,7 +34,7 @@ public class MuroInferior : MonoBehaviour
         if (txtTiempo != null)
             txtTiempo.text = "Tiempo restante: " + Mathf.Ceil(tiempoRestante);
 
-        if (tiempoRestante <= 10 && !parpadeando)
+        if (tiempoRestante <= 30 && !parpadeando)
         {
             parpadeando = true;
             StartCoroutine(ParpadearTexto());
@@ -43,13 +46,26 @@ public class MuroInferior : MonoBehaviour
 
     private IEnumerator ParpadearTexto()
     {
+        Color[] colores = { Color.red, Color.yellow, Color.magenta, Color.cyan, Color.white };
+        int indice = 0;
+
         while (!juegoTerminado)
         {
-            txtTiempo.enabled = !txtTiempo.enabled;
-            txtTiempo.color = Color.red;
+            txtTiempo.enabled = !txtTiempo.enabled; // enciende/apaga el texto
+            if (txtTiempo.enabled)
+            {
+                txtTiempo.color = colores[indice];   // cambia el color
+                indice = (indice + 1) % colores.Length; // siguiente color
+            }
+
             yield return new WaitForSeconds(0.5f);
         }
+
+        // Asegurarse de que el texto quede visible al final
+        txtTiempo.enabled = true;
+        txtTiempo.color = Color.red;
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -73,6 +89,8 @@ public class MuroInferior : MonoBehaviour
         {
             puntosParciales = pm.ObtenerPuntuacion(); // guardamos la puntuación parcial
         }
+        StartCoroutine(MostrarResultadoTrasPausa(puntosParciales));
+
         PuntosGlobales.puntosParciales = puntosParciales;
 
 
@@ -81,5 +99,22 @@ public class MuroInferior : MonoBehaviour
 
         Time.timeScale = 0f; // pausa el juego
     }
+    private IEnumerator MostrarResultadoTrasPausa(int puntos)
+    {
+        // Espera 3 segundos de reloj real aunque el juego esté pausado
+        yield return new WaitForSecondsRealtime(3f);
+
+        // Oculta Game Over
+        if (txtGameOver != null)
+            txtGameOver.SetActive(false);
+
+        // Muestra el texto de resultado con los puntos dinámicos
+        if (txtResultadoFinal != null)
+        {
+            txtResultadoFinal.gameObject.SetActive(true);
+            txtResultadoFinal.text = "RESULTADO\nPUNTOS OBTENIDOS: " + puntos;
+        }
+    }
+
 
 }
