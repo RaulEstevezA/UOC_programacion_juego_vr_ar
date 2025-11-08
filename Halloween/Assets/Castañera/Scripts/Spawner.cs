@@ -19,19 +19,50 @@ public class Spawner : MonoBehaviour
 
     [Header("Desfase vertical")]
     [SerializeField] private float extraSpawnYOffset = 0.3f;
-    // spawnea un pelín por encima del borde superior del área
 
     private float startTime;
+
+    // NUEVO
+    private bool spawningEnabled = false;
+    private Coroutine spawnCoroutine;
 
     void Start()
     {
         startTime = Time.time;
-        StartCoroutine(SpawnLoop());
+
+        // Dejamos que sea el GameManager quien llame a SetSpawningEnabled(true)
+        // Si quieres que encienda solo al inicio, puedes descomentar:
+        // SetSpawningEnabled(true);
+    }
+
+    // NUEVO: lo llama el GameManager
+    public void SetSpawningEnabled(bool enabled)
+    {
+        if (enabled)
+        {
+            if (spawningEnabled) return;
+
+            spawningEnabled = true;
+            // arrancamos la corrutina si no está en marcha
+            if (spawnCoroutine == null)
+                spawnCoroutine = StartCoroutine(SpawnLoop());
+        }
+        else
+        {
+            spawningEnabled = false;
+            if (spawnCoroutine != null)
+            {
+                StopCoroutine(spawnCoroutine);
+                spawnCoroutine = null;
+            }
+        }
     }
 
     IEnumerator SpawnLoop()
     {
-        while (GameManager.Instance == null || !GameManager.Instance.IsGameOver)
+        // mientras no haya GameManager o no haya terminado la partida Y el spawner siga activo
+        while ((CastanyeraGameManager.Instance == null || !CastanyeraGameManager.Instance.IsGameOver)
+               && spawningEnabled)
         {
             float t = Mathf.Clamp01((Time.time - startTime) / difficultyRampTime);
             float interval = Mathf.Lerp(initialInterval, minInterval, t);
@@ -41,8 +72,12 @@ public class Spawner : MonoBehaviour
 
             yield return new WaitForSeconds(interval);
         }
+
+        // Al salir del bucle, marcamos que ya no estamos spawneando
+        spawnCoroutine = null;
     }
 
+    // El resto igual…
     void TrySpawnOne(float rockChance)
     {
         if (spawnAreas == null || spawnAreas.Length == 0)
@@ -51,7 +86,6 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        // Elige un área al azar
         var area = spawnAreas[Random.Range(0, spawnAreas.Length)];
         if (area == null)
         {
@@ -59,7 +93,6 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        // Punto aleatorio dentro del BoxCollider2D (por X) y justo por encima (por Y)
         var b = area.bounds;
         float x = Random.Range(b.min.x, b.max.x);
         float y = b.max.y + extraSpawnYOffset;
@@ -77,7 +110,6 @@ public class Spawner : MonoBehaviour
         Instantiate(prefab, pos, Quaternion.identity);
     }
 
-    // Para visualizar en el editor las áreas
     void OnDrawGizmosSelected()
     {
         if (spawnAreas == null) return;
