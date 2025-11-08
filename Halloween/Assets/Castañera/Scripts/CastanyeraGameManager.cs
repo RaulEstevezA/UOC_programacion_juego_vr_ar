@@ -14,6 +14,9 @@ public class CastanyeraGameManager : MonoBehaviour
     [Header("UI - Timer")]
     [SerializeField] private TMP_Text timerText;          // ← Asigna el TextMeshPro del contador (Top-Right)
     [SerializeField] private float gameDurationSeconds = 60f; // ← Duración total (por defecto 60s)
+    [SerializeField] private Color normalTimerColor = Color.white;
+    [SerializeField] private Color warningTimerColor = Color.red;
+    [SerializeField] private float warningTime = 5f;
 
     [Header("Referencias opcionales")]
     [SerializeField] private MonoBehaviour spawnerBehaviour;      // ← Arrastra tu Spawner (debe tener SetSpawningEnabled(bool))
@@ -43,6 +46,7 @@ public class CastanyeraGameManager : MonoBehaviour
         IsGameOver = false;
 
         UpdateTimerUI(remainingTime);
+        if (timerText) timerText.color = normalTimerColor;
 
         // Arranque de sistemas (si se han asignado)
         SetSpawnerEnabled(true);
@@ -108,6 +112,13 @@ public class CastanyeraGameManager : MonoBehaviour
         int minutes = total / 60;
         int seconds = total % 60;
         timerText.text = $"{minutes:0}:{seconds:00}";
+
+        // Color de aviso al final
+        if (timeSeconds <= warningTime)
+            timerText.color = warningTimerColor;
+        else
+            timerText.color = normalTimerColor;
+
     }
 
     // --- Helpers para no acoplar tipos concretos (evita dependencias fuertes) ---
