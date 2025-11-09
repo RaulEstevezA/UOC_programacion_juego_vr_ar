@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class CastanyeraGameManager : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class CastanyeraGameManager : MonoBehaviour
     [SerializeField] private MonoBehaviour spawnerBehaviour;      // ← Arrastra tu Spawner (debe tener SetSpawningEnabled(bool))
     [SerializeField] private MonoBehaviour playerControllerBehaviour; // ← Arrastra tu CastanyeraController (debe tener SetInputEnabled(bool))
 
+    [Header("Música de fondo")]
+    [SerializeField] private AudioSource baseMusicSource;
+    [SerializeField] private AudioSource intenseMusicSource;
+    [SerializeField] private float intenseStartTime = 15f;  // segundos restantes para activar música intensa
+    [SerializeField] private float musicVolume = 0.6f;
+    [SerializeField] private float musicFadeDuration = 2f;
+
+    private bool hasSwitchedToIntense = false;
     public bool IsGameOver { get; private set; }
 
     private int score;
@@ -51,6 +60,22 @@ public class CastanyeraGameManager : MonoBehaviour
         // Arranque de sistemas (si se han asignado)
         SetSpawnerEnabled(true);
         SetPlayerInputEnabled(true);
+
+        // Música
+        hasSwitchedToIntense = false;
+
+        if (baseMusicSource != null)
+        {
+            baseMusicSource.loop = true;
+            baseMusicSource.volume = musicVolume;
+            baseMusicSource.Play();
+        }
+
+        if (intenseMusicSource != null)
+        {
+            intenseMusicSource.Stop();
+            intenseMusicSource.volume = 0f;
+        }
     }
 
     void Update()
@@ -63,10 +88,17 @@ public class CastanyeraGameManager : MonoBehaviour
 
         UpdateTimerUI(remainingTime);
 
+        // Cambio de música a intensa
+        if (!hasSwitchedToIntense && remainingTime <= intenseStartTime)
+        {
+            hasSwitchedToIntense = true;
+            StartCoroutine(FadeToIntenseMusic());
+        }
+
         // Fin de partida al llegar a 0
         if (remainingTime <= 0f)
         {
-            EndGame(); // reutilizamos tu flujo de Game Over
+            EndGame(); // reutilizamos flujo de Game Over
         }
     }
 
@@ -87,6 +119,9 @@ public class CastanyeraGameManager : MonoBehaviour
         // Parar sistemas de juego
         SetSpawnerEnabled(false);
         SetPlayerInputEnabled(false);
+
+        // pARAR MÚSICA
+        StopMusic();
 
         // Mostrar resultados
         if (gameOverPanel) gameOverPanel.SetActive(true);
@@ -140,5 +175,39 @@ public class CastanyeraGameManager : MonoBehaviour
         // void SetInputEnabled(bool enabled)
         var method = playerControllerBehaviour.GetType().GetMethod("SetInputEnabled");
         if (method != null) method.Invoke(playerControllerBehaviour, new object[] { enabled });
+    }
+
+    private IEnumerator FadeToIntenseMusic()
+    {
+        if (baseMusicSource == null || intenseMusicSource == null)
+            yield break;
+
+        intenseMusicSource.loop = true;
+        intenseMusicSource.volume = 0f;
+        intenseMusicSource.Play();
+
+        float elapsed = 0f;
+        float startBaseVol = baseMusicSource.volume;
+        float targetVol = musicVolume;
+
+        while (elapsed < musicFadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / musicFadeDuration);
+
+            baseMusicSource.volume = Mathf.Lerp(startBaseVol, 0f, t);
+            intenseMusicSource.volume = Mathf.Lerp(0f, targetVol, t);
+
+            yield return null;
+        }
+
+        baseMusicSource.Stop();
+        baseMusicSource.volume = startBaseVol;
+    }
+
+    private void StopMusic()
+    {
+        if (baseMusicSource != null) baseMusicSource.Stop();
+        if (intenseMusicSource != null) intenseMusicSource.Stop();
     }
 }

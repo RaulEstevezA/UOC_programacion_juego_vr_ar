@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1593569051
-  m_SortingLayer: -5
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -409440400497839121, guid: bb00bb8384ece6d43a9887ef1b9fb9b5, type: 3}
   m_Color: {r: 0.8679245, g: 0.6792397, b: 0.19241722, a: 1}
@@ -137,8 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cf503d23aa15248897c9a6fe3fee69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 5
+  baseFallSpeed: 5
   chestnutTag: Chestnut
   rockTag: Rock
   headTag: PlayerHead
   groundTag: Ground
+  sfxSource: {fileID: 0}
+  chestnutSfxClip: {fileID: 8300000, guid: 2bd961da68aa8864d804531f7588b776, type: 3}
