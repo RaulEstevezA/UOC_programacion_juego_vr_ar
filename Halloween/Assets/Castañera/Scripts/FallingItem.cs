@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class FallingItem : MonoBehaviour
 {
@@ -47,19 +47,26 @@ public class FallingItem : MonoBehaviour
             }
             else if (myTag == rockTag)
             {
-                // aquí podrías meter feedback de golpe si quieres
+                // Roca â†’ stun al jugador
+                CastanyeraController controller = other.GetComponentInParent<CastanyeraController>();
+                if (controller != null)
+                {
+                    controller.ApplyHitStun(0.5f); // 0.5s de penalizaciÃ³n
+                }
             }
 
+            // En ambos casos, el objeto se destruye al impactar
             Destroy(gameObject);
         }
 
+        // Si toca el suelo, tambiÃ©n se destruye
         if (other.CompareTag(groundTag))
         {
             Destroy(gameObject);
         }
     }
 
-    // === NUEVO: lo usará el Spawner ===
+    
     public void SetSpeedMultiplier(float multiplier)
     {
         currentFallSpeed = baseFallSpeed * multiplier;

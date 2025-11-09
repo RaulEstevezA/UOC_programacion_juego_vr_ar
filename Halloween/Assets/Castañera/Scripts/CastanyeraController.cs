@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -19,8 +20,11 @@ public class CastanyeraController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sr;
 
-    // Control desde el GameManager
+    // Control desde GameManager
     private bool inputEnabled = true;
+
+    // Control de stun por roca
+    private Coroutine stunCoroutine;
 
     void Start()
     {
@@ -42,7 +46,7 @@ public class CastanyeraController : MonoBehaviour
 
         float input = 0f;
 
-        // --- Teclado con nuevo Input System ---
+        // --- Teclado nuevo Input System ---
 #if ENABLE_INPUT_SYSTEM
         if (Keyboard.current != null)
         {
@@ -91,7 +95,6 @@ public class CastanyeraController : MonoBehaviour
 
         if (sr)
         {
-            // Gira a la derecha si se mueve a la derecha
             if (speed > 0.01f)
                 sr.flipX = input > 0f;
             else
@@ -103,5 +106,47 @@ public class CastanyeraController : MonoBehaviour
     public void SetInputEnabled(bool enabled)
     {
         inputEnabled = enabled;
+    }
+
+    // === Golpe de roca: parpadeo + stun ===
+    public void ApplyHitStun(float duration)
+    {
+        // Si ya está stuneada, no encadenamos otro stun
+        if (stunCoroutine != null) return;
+
+        stunCoroutine = StartCoroutine(HitStunRoutine(duration));
+    }
+
+    private IEnumerator HitStunRoutine(float duration)
+    {
+        // Bloqueamos el input
+        SetInputEnabled(false);
+
+        float elapsed = 0f;
+        float blinkInterval = 0.1f;
+        bool visible = true;
+
+        while (elapsed < duration)
+        {
+            elapsed += blinkInterval;
+
+            visible = !visible;
+            if (sr != null)
+                sr.enabled = visible;
+
+            yield return new WaitForSeconds(blinkInterval);
+        }
+
+        // Aseguramos que termina visible
+        if (sr != null)
+            sr.enabled = true;
+
+        // Solo reactivamos input si la partida NO ha terminado por tiempo
+        if (CastanyeraGameManager.Instance == null || !CastanyeraGameManager.Instance.IsGameOver)
+        {
+            SetInputEnabled(true);
+        }
+
+        stunCoroutine = null;
     }
 }
