@@ -10,40 +10,115 @@ public class Spawner : MonoBehaviour
     [Header("Áreas de aparición (BoxCollider2D)")]
     [SerializeField] private BoxCollider2D[] spawnAreas;
 
-    [Header("Ritmo y dificultad")]
-    [SerializeField] private float initialInterval = 0.9f;
-    [SerializeField] private float minInterval = 0.35f;
-    [SerializeField] private float difficultyRampTime = 30f; // segundos
-    [SerializeField, Range(0f, 1f)] private float initialRockChance = 0.2f;
-    [SerializeField, Range(0f, 1f)] private float maxRockChance = 0.6f;
-
     [Header("Desfase vertical")]
     [SerializeField] private float extraSpawnYOffset = 0.3f;
-    // spawnea un pelín por encima del borde superior del área
+
+    [Header("Control de spawn")]
+    [SerializeField] private bool startEnabled = true;
 
     private float startTime;
+    private bool spawningEnabled = false;
+    private Coroutine spawnCoroutine;
 
     void Start()
     {
         startTime = Time.time;
-        StartCoroutine(SpawnLoop());
+
+        if (startEnabled)
+        {
+            SetSpawningEnabled(true);
+        }
+    }
+
+    // Lo llama el GameManager
+    public void SetSpawningEnabled(bool enabled)
+    {
+        if (enabled)
+        {
+            if (spawningEnabled) return;
+
+            spawningEnabled = true;
+            if (spawnCoroutine == null)
+                spawnCoroutine = StartCoroutine(SpawnLoop());
+        }
+        else
+        {
+            spawningEnabled = false;
+            if (spawnCoroutine != null)
+            {
+                StopCoroutine(spawnCoroutine);
+                spawnCoroutine = null;
+            }
+        }
     }
 
     IEnumerator SpawnLoop()
     {
-        while (GameManager.Instance == null || !GameManager.Instance.IsGameOver)
+        while ((CastanyeraGameManager.Instance == null || !CastanyeraGameManager.Instance.IsGameOver)
+               && spawningEnabled)
         {
-            float t = Mathf.Clamp01((Time.time - startTime) / difficultyRampTime);
-            float interval = Mathf.Lerp(initialInterval, minInterval, t);
-            float rockChance = Mathf.Lerp(initialRockChance, maxRockChance, t);
+            float elapsed = Time.time - startTime; // segundos desde el inicio
 
-            TrySpawnOne(rockChance);
+            // Obtenemos parámetros en función del tramo
+            GetDifficultyForTime(elapsed, out float interval, out float rockChance, out float fallSpeedMultiplier);
+
+            TrySpawnOne(rockChance, fallSpeedMultiplier);
 
             yield return new WaitForSeconds(interval);
         }
+
+        spawnCoroutine = null;
     }
 
-    void TrySpawnOne(float rockChance)
+    // === Lógica de dificultad por tramos ===
+    private void GetDifficultyForTime(float elapsedSeconds,
+                                      out float interval,
+                                      out float rockChance,
+                                      out float fallSpeedMultiplier)
+    {
+        // Valores por defecto (último tramo)
+        interval = 0.35f;
+        rockChance = 0.5f;
+        fallSpeedMultiplier = 2.8f;
+
+        if (elapsedSeconds < 10f)
+        {
+            // 0–10 s: Aprendizaje
+            interval = 0.9f;
+            rockChance = 0.2f;
+            fallSpeedMultiplier = 0.7f;
+        }
+        else if (elapsedSeconds < 25f)
+        {
+            // 10–25 s: Confianza y ritmo
+            interval = 0.7f;
+            rockChance = 0.3f;
+            fallSpeedMultiplier = 1.0f;
+        }
+        else if (elapsedSeconds < 40f)
+        {
+            // 25–40 s: Tensión creciente
+            interval = 0.5f;
+            rockChance = 0.4f;
+            fallSpeedMultiplier = 1.6f;
+        }
+        else if (elapsedSeconds < 55f)
+        {
+            // 40–55 s: Fase crítica
+            interval = 0.35f;
+            rockChance = 0.5f;
+            fallSpeedMultiplier = 2.2f;
+        }
+        else
+        {
+            // 55–60 s: Cierre y resolución
+            interval = 0.35f;
+            rockChance = 0.5f;
+            fallSpeedMultiplier = 2.8f;
+        }
+    }
+
+    private void TrySpawnOne(float rockChance, float fallSpeedMultiplier)
     {
         if (spawnAreas == null || spawnAreas.Length == 0)
         {
@@ -51,7 +126,6 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        // Elige un área al azar
         var area = spawnAreas[Random.Range(0, spawnAreas.Length)];
         if (area == null)
         {
@@ -59,7 +133,6 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        // Punto aleatorio dentro del BoxCollider2D (por X) y justo por encima (por Y)
         var b = area.bounds;
         float x = Random.Range(b.min.x, b.max.x);
         float y = b.max.y + extraSpawnYOffset;
@@ -74,10 +147,16 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        Instantiate(prefab, pos, Quaternion.identity);
+        GameObject instance = Instantiate(prefab, pos, Quaternion.identity);
+
+        // Aplicar velocidad según tramo
+        var falling = instance.GetComponent<FallingItem>();
+        if (falling != null)
+        {
+            falling.SetSpeedMultiplier(fallSpeedMultiplier);
+        }
     }
 
-    // Para visualizar en el editor las áreas
     void OnDrawGizmosSelected()
     {
         if (spawnAreas == null) return;
