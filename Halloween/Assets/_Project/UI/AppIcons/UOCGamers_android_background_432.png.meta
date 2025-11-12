@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UOCGamers_android_background_432_0: -330105710250521205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
