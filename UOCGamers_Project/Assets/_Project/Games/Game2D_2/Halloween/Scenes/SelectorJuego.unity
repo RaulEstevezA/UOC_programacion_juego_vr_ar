@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbc78c371e1af42b9c1307dae044e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nombreEscena: Castanyera_scene
 --- !u!1 &91190339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbc78c371e1af42b9c1307dae044e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nombreEscena: Halloween
 --- !u!1 &1022889739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,6 +2163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbc78c371e1af42b9c1307dae044e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nombreEscena: main
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
