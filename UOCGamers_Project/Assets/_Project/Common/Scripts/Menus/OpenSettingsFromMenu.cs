@@ -4,33 +4,36 @@ using UnityEngine.UI;
 
 public class OpenSettingsFromMenu : MonoBehaviour
 {
-    [Header("Botón de ajustes (engranaje)")]
-    [SerializeField] private Button btnSettings;
+    [Header("Botones del menú")]
+    [SerializeField] private Button btnSettings;   // engranaje
+    [SerializeField] private Button btnModoLibre;  // botón Modo Libre
 
-    [Header("Nombre de la escena de ajustes")]
+    [Header("Nombres de escenas")]
     [SerializeField] private string settingsSceneName = "SettingsMenu";
+    [SerializeField] private string freeModeSceneName = "ModoLibre";
 
     private void Start()
     {
+        // Botón ajustes
         if (btnSettings != null)
-        {
             btnSettings.onClick.AddListener(OpenSettings);
-        }
         else
-        {
-            Debug.LogWarning("OpenSettingsFromMenu: btnSettings no asignado en el Inspector.");
-        }
+            Debug.LogWarning("OpenSettingsFromMenu: btnSettings no asignado.");
+
+        // Botón Modo Libre
+        if (btnModoLibre != null)
+            btnModoLibre.onClick.AddListener(OpenFreeMode);
+        else
+            Debug.LogWarning("OpenSettingsFromMenu: btnModoLibre no asignado.");
     }
 
     private void OpenSettings()
     {
-        if (!string.IsNullOrEmpty(settingsSceneName))
-        {
-            SceneManager.LoadScene(settingsSceneName);
-        }
-        else
-        {
-            Debug.LogWarning("OpenSettingsFromMenu: settingsSceneName está vacío.");
-        }
+        SceneManager.LoadScene(settingsSceneName);
+    }
+
+    private void OpenFreeMode()
+    {
+        SceneManager.LoadScene(freeModeSceneName);
     }
 }
