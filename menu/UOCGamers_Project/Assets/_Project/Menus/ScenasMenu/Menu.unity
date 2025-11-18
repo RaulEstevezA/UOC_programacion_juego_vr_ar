@@ -215,6 +215,7 @@ RectTransform:
   - {fileID: 1394555706}
   - {fileID: 1253081920}
   - {fileID: 1687348031}
+  - {fileID: 1549413445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -960,6 +961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnSettings: {fileID: 1687348032}
+  btnModoHistoria: {fileID: 280550017}
   btnModoLibre: {fileID: 942832606}
   settingsSceneName: SettingsMenu
   freeModeSceneName: ModoLibre
@@ -1147,6 +1149,59 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1549413444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549413445}
+  - component: {fileID: 1549413446}
+  m_Layer: 0
+  m_Name: StoryModeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1549413445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549413444}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 98454053}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1549413446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549413444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901d09ad22080b64ea318845fa64d464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storySceneName: ModoHistoria
+  finalSceneName: HistoriaFinal
+  game1SceneName: Halloween
+  game2SceneName: Castanyera_scene
+  game3SceneName: LuzDivina
+  game4SceneName: GameAR
+  game5SceneName: GameVR
+  totalScore: 0
+  currentStep: 0
 --- !u!1 &1687348030
 GameObject:
   m_ObjectHideFlags: 0
