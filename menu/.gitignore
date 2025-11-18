@@ -1,0 +1,48 @@
+# Archivos y carpetas de Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Archivos de caché y meta temporales
+sysinfo.txt
+*.pidb
+*.userprefs
+
+# Archivos de Unity específicos
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userosscache
+*.sln.docstates
+
+# Cache de paquetes y Asset Store
+[Aa]ssets/AssetStoreTools*
+[Aa]ssets/Plugins/Android/*/bin/
+[Aa]ssets/Plugins/Android/*/gen/
+
+# Gradle y Android
+.gradle/
+build/
+*.apk
+*.aar
+*.keystore
+*.jks
+*.dex
+*.class
+
+# Visual Studio / Rider
+.vscode/
+.idea/
+*.DotSettings
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+.vs/
