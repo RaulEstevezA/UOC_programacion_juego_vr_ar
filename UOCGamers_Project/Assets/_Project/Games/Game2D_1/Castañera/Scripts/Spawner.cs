@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject chestnutPrefab;
     [SerializeField] private GameObject rockPrefab;
 
-    [Header("¡reas de apariciÛn (BoxCollider2D)")]
+    [Header("√Åreas de aparici√≥n (BoxCollider2D)")]
     [SerializeField] private BoxCollider2D[] spawnAreas;
 
     [Header("Desfase vertical")]
@@ -59,7 +59,7 @@ public class Spawner : MonoBehaviour
         {
             float elapsed = Time.time - startTime; // segundos desde el inicio
 
-            // Obtenemos par·metros en funciÛn del tramo
+            // Obtenemos par√°metros en funci√≥n del tramo
             GetDifficultyForTime(elapsed, out float interval, out float rockChance, out float fallSpeedMultiplier);
 
             TrySpawnOne(rockChance, fallSpeedMultiplier);
@@ -70,48 +70,48 @@ public class Spawner : MonoBehaviour
         spawnCoroutine = null;
     }
 
-    // === LÛgica de dificultad por tramos ===
+    // === L√≥gica de dificultad por tramos ===
     private void GetDifficultyForTime(float elapsedSeconds,
                                       out float interval,
                                       out float rockChance,
                                       out float fallSpeedMultiplier)
     {
-        // Valores por defecto (˙ltimo tramo)
+        // Valores por defecto (√∫ltimo tramo)
         interval = 0.35f;
         rockChance = 0.5f;
         fallSpeedMultiplier = 2.8f;
 
         if (elapsedSeconds < 10f)
         {
-            // 0ñ10 s: Aprendizaje
+            // 0‚Äì10 s: Aprendizaje
             interval = 0.9f;
             rockChance = 0.2f;
             fallSpeedMultiplier = 0.7f;
         }
         else if (elapsedSeconds < 25f)
         {
-            // 10ñ25 s: Confianza y ritmo
+            // 10‚Äì25 s: Confianza y ritmo
             interval = 0.7f;
             rockChance = 0.3f;
             fallSpeedMultiplier = 1.0f;
         }
         else if (elapsedSeconds < 40f)
         {
-            // 25ñ40 s: TensiÛn creciente
+            // 25‚Äì40 s: Tensi√≥n creciente
             interval = 0.5f;
             rockChance = 0.4f;
             fallSpeedMultiplier = 1.6f;
         }
         else if (elapsedSeconds < 55f)
         {
-            // 40ñ55 s: Fase crÌtica
+            // 40‚Äì55 s: Fase cr√≠tica
             interval = 0.35f;
             rockChance = 0.5f;
             fallSpeedMultiplier = 2.2f;
         }
         else
         {
-            // 55ñ60 s: Cierre y resoluciÛn
+            // 55‚Äì60 s: Cierre y resoluci√≥n
             interval = 0.35f;
             rockChance = 0.5f;
             fallSpeedMultiplier = 2.8f;
@@ -129,7 +129,7 @@ public class Spawner : MonoBehaviour
         var area = spawnAreas[Random.Range(0, spawnAreas.Length)];
         if (area == null)
         {
-            Debug.LogWarning("[Spawner] Alguna spawnArea est· vacÌa.");
+            Debug.LogWarning("[Spawner] Alguna spawnArea est√° vac√≠a.");
             return;
         }
 
@@ -149,7 +149,7 @@ public class Spawner : MonoBehaviour
 
         GameObject instance = Instantiate(prefab, pos, Quaternion.identity);
 
-        // Aplicar velocidad seg˙n tramo
+        // Aplicar velocidad seg√∫n tramo
         var falling = instance.GetComponent<FallingItem>();
         if (falling != null)
         {
