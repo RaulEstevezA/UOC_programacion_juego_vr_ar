@@ -81,24 +81,46 @@ public class MuroInferior : MonoBehaviour
         if (txtGameOver != null)
             txtGameOver.SetActive(true);
 
-        // Obtener la puntuación parcial de este minijuego
-        PuntuacionManager pm = PuntuacionManager.FindFirstObjectByType<PuntuacionManager>();
+        // Obtener puntuación minijuego
+        PuntuacionManager pm = FindFirstObjectByType<PuntuacionManager>();
+        int puntosParciales = (pm != null) ? pm.ObtenerPuntuacion() : 0;
 
-        int puntosParciales = 0;
-        if (pm != null)
-        {
-            puntosParciales = pm.ObtenerPuntuacion(); // guardamos la puntuación parcial
-        }
-        StartCoroutine(MostrarResultadoTrasPausa(puntosParciales));
-
+        // Guardar puntos parciales
         PuntosGlobales.puntosParciales = puntosParciales;
 
+        // --- MODO HISTORIA ---
+        if(StoryModeController.Instance != null &&
+        StoryModeController.Instance.storyModeActive)
+    {
+            // Mostrar puntos y esperar antes de cambiar la escena
+            StartCoroutine(FinJuegoModoHistoria(puntosParciales));
+            return;
+        }
 
-        // Puedes usar puntosParciales más adelante cuando crees la escena de resultados
-        // ResultadoUI.puntosDelJuego = puntosParciales;
-
+        //  MODO LIBRE 
+        StartCoroutine(MostrarResultadoTrasPausa(puntosParciales));
         Time.timeScale = 0f; // pausa el juego
     }
+
+    private IEnumerator FinJuegoModoHistoria(int puntos)
+    {
+        // ocultar el "GAME OVER" y mostrar solo el resultado
+        if (txtGameOver != null)
+            txtGameOver.SetActive(false);
+
+        if (txtResultadoFinal != null)
+        {
+            txtResultadoFinal.gameObject.SetActive(true);
+            txtResultadoFinal.text = "RESULTADO\nPUNTOS OBTENIDOS: " + puntos;
+        }
+
+        // Esperamos X segundos para que el jugador vea los puntos
+        yield return new WaitForSecondsRealtime(3f); // ajusta 3f a lo que te parezca mejor
+
+        // StoryModeController suma puntuación, avanza de paso y carga ModoHistoria
+        StoryModeController.Instance.OnMiniGameFinished(puntos);
+    }
+
     private IEnumerator MostrarResultadoTrasPausa(int puntos)
     {
         // Espera 3 segundos de reloj real aunque el juego esté pausado
@@ -115,6 +137,4 @@ public class MuroInferior : MonoBehaviour
             txtResultadoFinal.text = "RESULTADO\nPUNTOS OBTENIDOS: " + puntos;
         }
     }
-
-
 }

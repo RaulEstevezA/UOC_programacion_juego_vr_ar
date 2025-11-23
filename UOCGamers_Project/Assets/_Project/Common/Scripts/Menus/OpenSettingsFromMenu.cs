@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class OpenSettingsFromMenu : MonoBehaviour
 {
     [Header("Botones del menú")]
-    [SerializeField] private Button btnSettings;   // engranaje
-    [SerializeField] private Button btnModoLibre;  // botón Modo Libre
+    [SerializeField] private Button btnSettings;      // engranaje
+    [SerializeField] private Button btnModoHistoria;  // botón "Modo Historia"
+    [SerializeField] private Button btnModoLibre;     // botón "Modo Libre"
 
     [Header("Nombres de escenas")]
     [SerializeField] private string settingsSceneName = "SettingsMenu";
@@ -25,6 +26,12 @@ public class OpenSettingsFromMenu : MonoBehaviour
             btnModoLibre.onClick.AddListener(OpenFreeMode);
         else
             Debug.LogWarning("OpenSettingsFromMenu: btnModoLibre no asignado.");
+
+        // Botón Modo Historia
+        if (btnModoHistoria != null)
+            btnModoHistoria.onClick.AddListener(StartStoryMode);
+        else
+            Debug.LogWarning("OpenSettingsFromMenu: btnModoHistoria no asignado.");
     }
 
     private void OpenSettings()
@@ -35,5 +42,17 @@ public class OpenSettingsFromMenu : MonoBehaviour
     private void OpenFreeMode()
     {
         SceneManager.LoadScene(freeModeSceneName);
+    }
+
+    private void StartStoryMode()
+    {
+        if (StoryModeController.Instance != null)
+        {
+            StoryModeController.Instance.StartStoryMode();
+        }
+        else
+        {
+            Debug.LogWarning("OpenSettingsFromMenu: no hay StoryModeController en la escena.");
+        }
     }
 }

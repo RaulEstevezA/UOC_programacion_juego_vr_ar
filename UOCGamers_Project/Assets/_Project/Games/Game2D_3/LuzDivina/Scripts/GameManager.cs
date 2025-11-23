@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -78,6 +79,8 @@ public class GameManager : MonoBehaviour
         if (board) board.SetInteractable(false); // bloquea clicks
         if (gameOverPanel) gameOverPanel.SetActive(true);
         Debug.Log("GAME OVER");
+
+        HandleEndOfMinigame(false);
     }
 
     private void HandleBoardSolved()
@@ -99,6 +102,36 @@ public class GameManager : MonoBehaviour
         UpdateHud();
 
         Debug.Log("+15 segundos por completar el puzzle!");
+
+        if (puzzlesSolved >= totalPuzzles)
+        {
+            HandleEndOfMinigame(true); // true = victoria
+        }
+    }
+
+    private void HandleEndOfMinigame(bool victory)
+    {
+        // Creamos una puntuación básica:
+        int finalScore = puzzlesSolved * 10;
+
+        // --- MODO HISTORIA ---
+        if (StoryModeController.Instance != null &&
+            StoryModeController.Instance.storyModeActive)
+        {
+            StartCoroutine(EndGameStoryMode(finalScore));
+            return;
+        }
+
+        // --- MODO LIBRE ---
+        Debug.Log($"[Luz Divina - Modo Libre] Puntuación final: {finalScore}");
+    }
+
+    private IEnumerator EndGameStoryMode(int score)
+    {
+        yield return new WaitForSecondsRealtime(3f);
+
+        if (StoryModeController.Instance != null)
+            StoryModeController.Instance.OnMiniGameFinished(score);
     }
 
     private void OnPressReset() => StartLevel();
