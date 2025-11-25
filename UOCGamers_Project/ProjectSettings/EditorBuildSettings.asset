@@ -11,6 +11,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Menus/ScenasMenu/Menu.unity
     guid: 244a388aa7d8ff44e96dfd2066b64520
+  - enabled: 1
+    path: Assets/_Project/Menus/ScenasMenu/HistoriaFinal.unity
+    guid: 9bd48408ce311e1408d8c165d52bfb60
+  - enabled: 1
+    path: Assets/_Project/Menus/ScenasMenu/ModoHistoria.unity
+    guid: cb00ff1e331671e48b7ae8b9ac1de91e
+  - enabled: 1
+    path: Assets/_Project/Menus/ScenasMenu/ModoLibre.unity
+    guid: 0730463da1f4d874fb7bf29cd2dfa23a
+  - enabled: 1
+    path: Assets/_Project/Menus/ScenasMenu/SettingsMenu.unity
+    guid: 23f80636025edc942a0343c45e72dc2d
+  - enabled: 1
+    path: Assets/_Project/Menus/ScenasMenu/SplashTeam.unity
+    guid: 8fe445b286f562449a9733cb74f4319e
+  - enabled: 1
+    path: Assets/_Project/Games/GameVR/Scenes/BasicScene.unity
+    guid: 4e9fef26e6adb88479ad1b9834a32d94
+  - enabled: 1
+    path: Assets/_Project/Games/GameAR/TioAR.unity
+    guid: f4782f40be123414f9a3d0787cdb6b96
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 451d04d302f9742e1aa164a1b8580876, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
