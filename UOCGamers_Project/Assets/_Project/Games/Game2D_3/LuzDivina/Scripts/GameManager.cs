@@ -142,4 +142,3 @@ public class GameManager : MonoBehaviour
         if (puzzleText) puzzleText.text = $"Puzzle {puzzlesSolved}/{Mathf.Max(1, totalPuzzles)}";
     }
 }
-

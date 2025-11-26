@@ -379,7 +379,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 280550018}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 551439183}
+        m_TargetAssemblyTypeName: StoryModeController, Assembly-CSharp
+        m_MethodName: StartStoryMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &280550018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +692,7 @@ MonoBehaviour:
   game5SceneName: BasicScene
   currentStep: 0
   totalScore: 0
+  storyModeActive: 0
 --- !u!4 &551439184
 Transform:
   m_ObjectHideFlags: 0
@@ -1013,7 +1026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnSettings: {fileID: 1687348032}
-  btnModoHistoria: {fileID: 280550017}
   btnModoLibre: {fileID: 942832606}
   settingsSceneName: SettingsMenu
   freeModeSceneName: ModoLibre
