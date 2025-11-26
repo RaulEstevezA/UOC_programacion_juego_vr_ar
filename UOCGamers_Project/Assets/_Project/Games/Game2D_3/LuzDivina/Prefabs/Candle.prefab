@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3120359803958659639}
   - component: {fileID: 1290767989139401046}
   - component: {fileID: 9108478526362051007}
-  - component: {fileID: 1998440451224259471}
+  - component: {fileID: 707306450122494012}
   m_Layer: 5
   m_Name: Candle
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1998440451224259471
+--- !u!114 &707306450122494012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,6 @@ GameObject:
   - component: {fileID: 8031549773356357439}
   - component: {fileID: 3908361081337800808}
   - component: {fileID: 8246855692552202577}
-  - component: {fileID: 6401797279563458927}
   m_Layer: 5
   m_Name: Art
   m_TagString: Untagged
@@ -222,27 +221,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6401797279563458927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6698488215345913499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2eca9312d301e429bac10cc0662f9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitArea: {fileID: 1290767989139401046}
-  art: {fileID: 8246855692552202577}
-  offSprite: {fileID: 21300000, guid: 723d4c91add22e4479a4f54dd7ed78a5, type: 3}
-  onFrames:
-  - {fileID: 21300000, guid: c04a1847fd4ee17469d2204b9917d318, type: 3}
-  fps: 10
-  soundOn: {fileID: 0}
-  soundOff: {fileID: 0}
-  volume: 0.8
-  OnToggled:
-    m_PersistentCalls:
-      m_Calls: []

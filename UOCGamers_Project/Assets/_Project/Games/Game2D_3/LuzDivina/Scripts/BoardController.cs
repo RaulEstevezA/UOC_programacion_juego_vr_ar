@@ -7,155 +7,166 @@ public class BoardController : MonoBehaviour
     public event System.Action OnBoardSolved;
 
     [Header("Referencias")]
-    [SerializeField] private Button resetButton;        // Botón "Reiniciar"
-    [SerializeField] private Transform gridParent;      // Contenedor donde se instancian las velas
-    [SerializeField] private GameObject candlePrefab;   // Prefab de la vela
+    [SerializeField] private Button resetButton;
 
-    [Header("Tamaño del tablero")]
+    [Header("Grid")]
     [SerializeField] private int rows = 3;
     [SerializeField] private int cols = 3;
 
-    [Header("Ajustes de mezcla")]
-    [SerializeField, Tooltip("Número de movimientos aleatorios al iniciar")]
-    private int randomMoves = 0;
-    [SerializeField] private bool mezclarAlIniciar = true;
+    [Header("Velas ordenadas MANUALMENTE")]
+    [Tooltip("Rellenar en orden: fila 1 izq-der, luego fila 2, luego fila 3")]
+    [SerializeField] private Candle[] candleSlots = new Candle[9];
 
-    private readonly List<Candle> candles = new List<Candle>();
+    [Header("Configuracion inicial")]
+    [SerializeField, Tooltip("Numero de clicks aleatorios al empezar")]
+    private int randomClicksAtStart = 5;
 
-    // ----------------------------------------------------------------------
+    private List<Candle> candles = new List<Candle>();
+    private Candle[,] grid;
+    private Dictionary<Candle, Vector2Int> candleToPos = new Dictionary<Candle, Vector2Int>();
+
+    private bool solved = false;
 
     private void Awake()
     {
-        if (!gridParent) gridParent = transform; // Si no se asigna, usa este mismo objeto (Board)
-
-        if (resetButton != null)
+        if (resetButton)
             resetButton.onClick.AddListener(ResetBoard);
+
+        Debug.Log("[Board] Awake en " + name);
     }
 
     private void Start()
     {
-        BuildGrid();
-
-        if (mezclarAlIniciar && randomMoves > 0)
-            Shuffle(randomMoves);
+        CacheCandlesFromSlots();
+        ResetBoard();
     }
 
-    // ----------------------------------------------------------------------
-
-    private void BuildGrid()
+    private void CacheCandlesFromSlots()
     {
-        // Limpia los hijos antiguos
         candles.Clear();
+        grid = new Candle[rows, cols];
+        candleToPos.Clear();
 
-        for (int i = gridParent.childCount - 1; i >= 0; i--)
-            Destroy(gridParent.GetChild(i).gameObject);
-
-        if (!candlePrefab)
+        int expected = rows * cols;
+        if (candleSlots == null || candleSlots.Length != expected)
         {
-            Debug.LogError("Falta asignar Candle Prefab en BoardController.");
+            Debug.LogError("[Board] Numero incorrecto de referencias en candleSlots.");
             return;
         }
 
-        int total = Mathf.Max(1, rows) * Mathf.Max(1, cols);
-
-        for (int i = 0; i < total; i++)
+        for (int i = 0; i < expected; i++)
         {
-            GameObject go = Instantiate(candlePrefab, gridParent);
-            Candle c = go.GetComponent<Candle>();
-
-            if (c == null)
+            var candle = candleSlots[i];
+            if (!candle)
             {
-                Debug.LogError("El prefab no tiene componente Candle.");
+                Debug.LogError("[Board] candleSlots[" + i + "] esta vacio.");
                 continue;
             }
 
-            c.SetState(false, true); // Empieza apagada
+            candles.Add(candle);
 
-            // Cuando el usuario pulsa esta vela:
-            c.OnToggled?.AddListener((who, _) => OnUserToggled(who));
+            int r = i / cols;
+            int c = i % cols;
 
-            candles.Add(c);
+            grid[r, c] = candle;
+            candleToPos[candle] = new Vector2Int(r, c);
+
+            candle.OnToggled.RemoveAllListeners();
+            candle.OnToggled.AddListener(HandleCandleToggled);
         }
+
+        Debug.Log("[Board] CacheCandlesFromSlots: " + candles.Count + " velas mapeadas.");
     }
 
-    // ----------------------------------------------------------------------
-
-    private void Shuffle(int moves)
+    private void HandleCandleToggled(Candle candle, bool isOn)
     {
-        if (candles.Count == 0) return;
-        moves = Mathf.Max(0, moves);
+        if (solved) return;
+        if (!candleToPos.TryGetValue(candle, out var pos)) return;
 
-        for (int i = 0; i < moves; i++)
-        {
-            int idx = Random.Range(0, candles.Count);
+        int r = pos.x;
+        int c = pos.y;
 
-            // Simula un toque real: cambia la propia y vecinas
-            candles[idx].Toggle();     // propia 
-            ToggleNeighborsOf(idx);    // vecinas
-        }
+        Debug.Log("[Board] CLICK logico en (" + (r + 1) + "," + (c + 1) + ") para " + candle.name);
+
+        ToggleAt(r - 1, c, false);
+        ToggleAt(r + 1, c, false);
+        ToggleAt(r, c - 1, false);
+        ToggleAt(r, c + 1, false);
+
         CheckSolved();
     }
 
+    private void ToggleAt(int r, int c, bool instant)
+    {
+        if (r < 0 || r >= rows || c < 0 || c >= cols) return;
+        var candle = grid[r, c];
+        if (candle == null) return;
+
+        Debug.Log("   -> toggle (" + (r + 1) + "," + (c + 1) + ")");
+
+        candle.SetState(!candle.IsOn, instant);
+    }
+
+    private void ApplyMove(int r, int c, bool instant)
+    {
+        ToggleAt(r, c, instant);
+        ToggleAt(r - 1, c, instant);
+        ToggleAt(r + 1, c, instant);
+        ToggleAt(r, c - 1, instant);
+        ToggleAt(r, c + 1, instant);
+    }
 
     public void ResetBoard()
     {
+        solved = false;
+
+        if (candles.Count == 0 || grid == null)
+            CacheCandlesFromSlots();
+
         foreach (var c in candles)
             c.SetState(false, true);
 
-        if (mezclarAlIniciar && randomMoves > 0)
-            Shuffle(randomMoves);
+        int moves = Mathf.Max(0, randomClicksAtStart);
+        for (int i = 0; i < moves; i++)
+        {
+            int r = Random.Range(0, rows);
+            int c = Random.Range(0, cols);
+            ApplyMove(r, c, true);
+        }
+
+        Debug.Log("[Board] ResetBoard completado.");
     }
-    // Se llama cuando el usuario pulsa una vela 'who'
-    private void OnUserToggled(Candle who)
+
+    private void Update()
     {
-        int idx = candles.IndexOf(who);
-        if (idx < 0) return;
-
-        ToggleNeighborsOf(idx); // cambia vecinas SIN disparar eventos recursivos
-        CheckSolved();
+        if (!solved)
+            CheckSolved();
     }
 
-    // Cambia arriba/abajo/izquierda/derecha del índice dado
-    private void ToggleNeighborsOf(int idx)
-    {
-        int r = idx / cols;
-        int c = idx % cols;
-
-        ToggleNeighbor(r - 1, c); // up
-        ToggleNeighbor(r + 1, c); // down
-        ToggleNeighbor(r, c - 1); // left
-        ToggleNeighbor(r, c + 1); // right
-    }
-
-    // Cambia una celda concreta si existe (sin emitir OnToggled para evitar cascadas)
-    private void ToggleNeighbor(int row, int col)
-    {
-        if (row < 0 || col < 0 || row >= rows || col >= cols) return;
-
-        int i = row * cols + col;
-        var n = candles[i];
-        n.SetState(!n.IsOn, false);  // cambia estado sin invocar OnToggled
-    }
-
-    // Comprueba si TODAS están encendidas
     private void CheckSolved()
     {
         if (candles.Count == 0) return;
-        for (int i = 0; i < candles.Count; i++)
-            if (!candles[i].IsOn) return;
 
-        // ¡victoria!
+        foreach (var c in candles)
+        {
+            if (c.IsOn)
+                return;
+        }
+
+        solved = true;
+        Debug.Log("[Board] Puzzle resuelto (todas apagadas)");
         OnBoardSolved?.Invoke();
     }
 
     public void SetInteractable(bool enabled)
     {
-        // Desactiva/activa todos los botones de las velas
-        var buttons = gridParent ? gridParent.GetComponentsInChildren<Button>(true)
-                                 : GetComponentsInChildren<Button>(true);
-        foreach (var b in buttons) b.interactable = enabled;
+        var buttons = GetComponentsInChildren<Button>(true);
+        foreach (var b in buttons)
+            b.interactable = enabled;
     }
 
-
-
+    public void SetInteractactable(bool enabled)
+    {
+        SetInteractable(enabled);
+    }
 }
