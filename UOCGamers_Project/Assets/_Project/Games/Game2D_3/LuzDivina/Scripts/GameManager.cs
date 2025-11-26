@@ -11,10 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button resetButton;         // arrastra "Reiniciar"
     [SerializeField] private TextMeshProUGUI timeText;   // "Tiempo: 120"
     [SerializeField] private TextMeshProUGUI puzzleText; // "Puzzle 0/3"
-    [SerializeField] private GameObject winPanel;        // opcional
-    [SerializeField] private GameObject gameOverPanel;   // <-- NUEVO: arrastra el panel
+    [SerializeField] private GameObject winPanel;        // panel de victoria FINAL
+    [SerializeField] private GameObject gameOverPanel;   // panel de game over
 
-    [Header("Lógica de juego")]
+    [Header("Logica de juego")]
     [SerializeField] private int startTimeSeconds = 120;
     [SerializeField] private int totalPuzzles = 3;
 
@@ -26,12 +26,20 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (resetButton) { resetButton.onClick.RemoveAllListeners(); resetButton.onClick.AddListener(OnPressReset); }
-        if (board) board.OnBoardSolved += HandleBoardSolved;
+        if (resetButton)
+        {
+            resetButton.onClick.RemoveAllListeners();
+            resetButton.onClick.AddListener(OnPressReset);
+        }
+
+        if (board)
+            board.OnBoardSolved += HandleBoardSolved;
     }
+
     private void OnDestroy()
     {
-        if (board) board.OnBoardSolved -= HandleBoardSolved;
+        if (board)
+            board.OnBoardSolved -= HandleBoardSolved;
     }
 
     private void Start() => StartLevel();
@@ -40,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         levelWon = false;
         gameOver = false;
+        puzzlesSolved = 0; // empezamos desde el puzzle 0
 
         if (winPanel) winPanel.SetActive(false);
         if (gameOverPanel) gameOverPanel.SetActive(false);
@@ -85,33 +94,45 @@ public class GameManager : MonoBehaviour
 
     private void HandleBoardSolved()
     {
-        if (levelWon || gameOver) return;
-        levelWon = true;
+        if (gameOver) return;
 
+        // Sumamos +15 segundos por puzzle completado
         timeLeft += 15f;
         if (timeLeft > startTimeSeconds)
-            startTimeSeconds = Mathf.CeilToInt(timeLeft); // actualiza valor base si reinicias
+            startTimeSeconds = Mathf.CeilToInt(timeLeft); 
 
-        if (timerCo != null) StopCoroutine(timerCo);
-        timerCo = StartCoroutine(TimerTick());
-
-        if (board) board.SetInteractable(false);
-        if (winPanel) winPanel.SetActive(true);
-
+        // Marcamos que hemos resuelto un puzzle
         puzzlesSolved = Mathf.Min(totalPuzzles, puzzlesSolved + 1);
         UpdateHud();
 
-        Debug.Log("+15 segundos por completar el puzzle!");
+        Debug.Log("+15 segundos por completar el puzzle! Puzzle " + puzzlesSolved + "/" + totalPuzzles);
 
+        // Si hemos completado TODOS los puzzles, victoria final
         if (puzzlesSolved >= totalPuzzles)
         {
-            HandleEndOfMinigame(true); // true = victoria
+            levelWon = true;
+
+            if (timerCo != null) { StopCoroutine(timerCo); timerCo = null; }
+            if (board) board.SetInteractable(false);
+            if (winPanel) winPanel.SetActive(true);
+
+            HandleEndOfMinigame(true); // victoria final
+        }
+        else
+        {
+            // Solo completado un puzzle intermedio:
+            // preparamos el siguiente puzzle y seguimos con el mismo contador de tiempo.
+            if (board)
+            {
+                board.ResetBoard();
+                board.SetInteractable(true);
+            }
         }
     }
 
     private void HandleEndOfMinigame(bool victory)
     {
-        // Creamos una puntuación básica:
+        // Mantener tu puntuacion original: 10 puntos por puzzle
         int finalScore = puzzlesSolved * 10;
 
         // --- MODO HISTORIA ---
@@ -123,7 +144,7 @@ public class GameManager : MonoBehaviour
         }
 
         // --- MODO LIBRE ---
-        Debug.Log($"[Luz Divina - Modo Libre] Puntuación final: {finalScore}");
+        Debug.Log("[Luz Divina - Modo Libre] Puntuacion final: " + finalScore);
     }
 
     private IEnumerator EndGameStoryMode(int score)
@@ -138,8 +159,9 @@ public class GameManager : MonoBehaviour
 
     private void UpdateHud()
     {
-        if (timeText) timeText.text = $"Tiempo: {Mathf.CeilToInt(timeLeft)}";
-        if (puzzleText) puzzleText.text = $"Puzzle {puzzlesSolved}/{Mathf.Max(1, totalPuzzles)}";
+        if (timeText) timeText.text = "Tiempo: " + Mathf.CeilToInt(timeLeft);
+        if (puzzleText) puzzleText.text = "Puzzle " + puzzlesSolved + "/" + Mathf.Max(1, totalPuzzles);
     }
 }
+
 

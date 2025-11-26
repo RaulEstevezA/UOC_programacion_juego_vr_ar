@@ -19,33 +19,38 @@ public class Candle : MonoBehaviour
     [SerializeField] private AudioClip soundOff;
     [SerializeField] private float volume = 0.8f;
 
-
     public bool IsOn { get; private set; }
     public UnityEvent<Candle, bool> OnToggled;
 
     private Coroutine anim;
     private AudioSource audioSource;
 
-
     void Awake()
     {
         // ----- Referencias básicas -----
         if (!hitArea) hitArea = GetComponent<Image>();
 
-        // Busca un Image hijo distinto al del root
-        if (!art || art == hitArea)
+        // Busca un Image hijo distinto al root para art
+        if (!art)
         {
             var imgs = GetComponentsInChildren<Image>(true);
             foreach (var img in imgs)
             {
-                if (img != hitArea) { art = img; break; }
+                if (img.gameObject != this.gameObject)
+                {
+                    art = img;
+                    break;
+                }
             }
         }
+
+        if (!art)
+            Debug.LogError("[Candle] Falta asignar 'art' (Image hijo)", this);
 
         // HitArea: invisible pero clicable
         if (hitArea)
         {
-            if (hitArea.sprite != null) hitArea.sprite = null; // no dibujes nada
+            if (hitArea.sprite != null) hitArea.sprite = null;
             var c = hitArea.color; c.a = 0f; hitArea.color = c;
             hitArea.raycastTarget = true;
         }
@@ -53,56 +58,54 @@ public class Candle : MonoBehaviour
         // El arte no intercepta toques
         if (art) art.raycastTarget = false;
 
-        // ----- Configuración de botón -----
+        // ----- Botón -----
         var btn = GetComponent<Button>();
         if (!btn) btn = gameObject.AddComponent<Button>();
         if (btn && btn.targetGraphic == null) btn.targetGraphic = hitArea;
-        btn.onClick.RemoveListener(Toggle);
+
+        btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(Toggle);
 
-        // ----- Configuración de audio -----
+        // ----- Audio -----
         audioSource = GetComponent<AudioSource>();
-        if (!audioSource)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+        if (!audioSource) audioSource = gameObject.AddComponent<AudioSource>();
 
-        audioSource.playOnAwake = false;  // no suena al iniciar
-        audioSource.loop = false;         // sonidos cortos
-        audioSource.spatialBlend = 0f;    // 2D (no se atenúa por distancia)
-        audioSource.volume = volume;      // usa el volumen del Inspector
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f;
+        audioSource.volume = volume;
 
         // ----- Eventos -----
         if (OnToggled == null)
             OnToggled = new UnityEvent<Candle, bool>();
 
         // ----- Estado inicial -----
-        SetState(false, true); // empieza apagada
+        SetState(false, true); // apagada sin sonido
     }
-
 
     public void Toggle()
     {
+        Debug.Log($"[Candle] CLICK en {name}, antes={IsOn}");
         SetState(!IsOn, false);
-        OnToggled?.Invoke(this, IsOn);
+        OnToggled?.Invoke(this, IsOn);   // ahora mismo BoardController NUEVO no lo usa
     }
 
     public void SetState(bool on, bool instant)
     {
         IsOn = on;
 
-        // Sonido según estado (encender/apagar)
-        if (audioSource)
+        // Sonido
+        if (!instant && audioSource)
         {
             var clip = on ? soundOn : soundOff;
             if (clip)
             {
-                audioSource.pitch = Random.Range(0.95f, 1.05f); // variación natural
-                audioSource.PlayOneShot(clip, volume);
+                audioSource.pitch = Random.Range(0.95f, 1.05f);
+                audioSource.PlayOneShot(clip);
             }
         }
 
-        // Control visual
+        // Visual / animación
         if (anim != null)
         {
             StopCoroutine(anim);
@@ -111,27 +114,15 @@ public class Candle : MonoBehaviour
 
         if (!art) return;
 
-        if (on)
+        if (IsOn && onFrames != null && onFrames.Length > 0)
         {
-            if (onFrames != null && onFrames.Length > 0)
-            {
-                art.enabled = true;
-                art.sprite = onFrames[0];
-                anim = StartCoroutine(PlayOnLoop());
-            }
-            else
-            {
-                art.sprite = offSprite != null ? offSprite : art.sprite;
-                art.enabled = art.sprite != null;
-            }
+            anim = StartCoroutine(PlayOnLoop());
         }
         else
         {
             art.sprite = offSprite;
-            art.enabled = art.sprite != null;
         }
     }
-
 
     private IEnumerator PlayOnLoop()
     {
@@ -147,4 +138,3 @@ public class Candle : MonoBehaviour
         }
     }
 }
-
