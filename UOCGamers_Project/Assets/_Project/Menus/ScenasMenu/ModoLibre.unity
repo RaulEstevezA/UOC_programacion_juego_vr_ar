@@ -1642,7 +1642,7 @@ MonoBehaviour:
   settingsSceneName: SettingsMenu
   pumpkinSceneName: Halloween
   castanyeraSceneName: Castanyera_scene
-  luzSceneName: main
+  luzSceneName: LuzDivina
   arSceneName: 
   vrSceneName: BasicScene
 --- !u!1 &1411819908
