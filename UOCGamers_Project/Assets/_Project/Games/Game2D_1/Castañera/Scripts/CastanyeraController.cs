@@ -16,14 +16,10 @@ public class CastanyeraController : MonoBehaviour
     private float xMin, xMax;
     private Camera cam;
 
-    // refs de animación
     private Animator animator;
     private SpriteRenderer sr;
 
-    // Control desde GameManager
     private bool inputEnabled = true;
-
-    // Control de stun por roca
     private Coroutine stunCoroutine;
 
     void Start()
@@ -40,86 +36,85 @@ public class CastanyeraController : MonoBehaviour
 
     void Update()
     {
-        // Si el GameManager ha terminado la partida o ha desactivado el input -> no hacemos nada
         if (!inputEnabled) return;
         if (CastanyeraGameManager.Instance != null && CastanyeraGameManager.Instance.IsGameOver) return;
 
         float input = 0f;
+        Vector3 pos = transform.position;
 
-        // --- Teclado nuevo Input System ---
 #if ENABLE_INPUT_SYSTEM
+        // --- Teclado PC ---
         if (Keyboard.current != null)
         {
             if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) input -= 1f;
             if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) input += 1f;
         }
-#endif
 
-        // --- Fallback al Input clásico ---
+        // --- Touch en Android / Ratón ---
+        bool pointerPressed = false;
+        Vector3 pointerWorld = pos;
+
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+        {
+            Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+            pointerWorld = cam.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, cam.nearClipPlane));
+            pointerPressed = true;
+        }
+        else if (Mouse.current != null && Mouse.current.leftButton.isPressed)
+        {
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            pointerWorld = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
+            pointerPressed = true;
+        }
+
+        if (allowMouseFollow && pointerPressed)
+        {
+            float dir = Mathf.Sign(pointerWorld.x - pos.x);
+            input = Mathf.Abs(pointerWorld.x - pos.x) > 0.01f ? dir : 0f;
+            pos.x = Mathf.MoveTowards(pos.x, pointerWorld.x, moveSpeed * Time.deltaTime);
+        }
+
+#else
+        // Fallback clásico
         if (Mathf.Approximately(input, 0f))
             input = Input.GetAxisRaw("Horizontal");
 
-        Vector3 pos = transform.position;
-
-        // --- Seguimiento con ratón/pantalla táctil ---
-        bool mousePressed =
-#if ENABLE_INPUT_SYSTEM
-            Mouse.current != null && Mouse.current.leftButton.isPressed;
-#else
-            Input.GetMouseButton(0);
-#endif
-
-        if (allowMouseFollow && mousePressed)
+        if (allowMouseFollow && Input.GetMouseButton(0))
         {
-#if ENABLE_INPUT_SYSTEM
-            Vector3 mouseWorld = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-#else
             Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
-#endif
             float dir = Mathf.Sign(mouseWorld.x - pos.x);
             input = Mathf.Abs(mouseWorld.x - pos.x) > 0.01f ? dir : 0f;
             pos.x = Mathf.MoveTowards(pos.x, mouseWorld.x, moveSpeed * Time.deltaTime);
         }
-        else
+#endif
+
+        // Movimiento normal si no es seguimiento táctil
+        if (!allowMouseFollow || (allowMouseFollow && !pointerPressed))
         {
             pos.x += input * moveSpeed * Time.deltaTime;
         }
 
-        // Limitar movimiento a los bordes de pantalla
         pos.x = Mathf.Clamp(pos.x, xMin, xMax);
         transform.position = pos;
 
-        // --- Animación + flip de sprite ---
         float speed = Mathf.Abs(input);
         if (animator) animator.SetFloat("Speed", speed);
-
-        if (sr)
-        {
-            if (speed > 0.01f)
-                sr.flipX = input > 0f;
-            else
-                sr.flipX = false;
-        }
+        if (sr) sr.flipX = speed > 0.01f ? input > 0f : false;
     }
 
-    // Lo usa el GameManager para habilitar/deshabilitar input al inicio/fin de partida
     public void SetInputEnabled(bool enabled)
     {
         inputEnabled = enabled;
     }
 
-    // === Golpe de roca: parpadeo + stun ===
     public void ApplyHitStun(float duration)
     {
-        // Si ya está stuneada, no encadenamos otro stun
         if (stunCoroutine != null) return;
-
         stunCoroutine = StartCoroutine(HitStunRoutine(duration));
     }
 
     private IEnumerator HitStunRoutine(float duration)
     {
-        // Bloqueamos el input
         SetInputEnabled(false);
 
         float elapsed = 0f;
@@ -129,23 +124,15 @@ public class CastanyeraController : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += blinkInterval;
-
             visible = !visible;
-            if (sr != null)
-                sr.enabled = visible;
-
+            if (sr != null) sr.enabled = visible;
             yield return new WaitForSeconds(blinkInterval);
         }
 
-        // Aseguramos que termina visible
-        if (sr != null)
-            sr.enabled = true;
+        if (sr != null) sr.enabled = true;
 
-        // Solo reactivamos input si la partida NO ha terminado por tiempo
         if (CastanyeraGameManager.Instance == null || !CastanyeraGameManager.Instance.IsGameOver)
-        {
             SetInputEnabled(true);
-        }
 
         stunCoroutine = null;
     }
