@@ -60,15 +60,15 @@ public class StoryModeController : MonoBehaviour
         switch (currentStep)
         {
             case 0:
-                return "INTRO: Aquí va el texto inicial antes del Juego 1.";
+                return "Dicen que en España cada fiesta es una puerta.. Un niño curioso encuentra una calendario viejo en el desvan y de repente comienza un año de aventuras...";
             case 1:
-                return "Texto después del Juego 1, antes del Juego 2.";
+                return "Aqui huele a brasero y castañas.. uhm esa señora necesita mi ayuda para recojer los frutos.";
             case 2:
-                return "Texto después del Juego 2, antes del Juego 3.";
+                return "Se acerca Semana Santa... Debo apagar todas las velas, es la única forma de adquirir la Luz Divina";
             case 3:
-                return "Texto después del Juego 3, antes del Juego 4.";
+                return "La navidad esta cerca... ¡Que poco me gusta! Necesito encontrar al Tió para salir de aqui";
             case 4:
-                return "Texto después del Juego 4, antes del final.";
+                return "Al fin civilización... Running Of The Bulls. Hostia, ya entiendo, que no me pille el toro. Tengo que escapaaaar!";
             default:
                 return "";
         }
