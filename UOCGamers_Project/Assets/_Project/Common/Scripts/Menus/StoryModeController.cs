@@ -60,17 +60,20 @@ public class StoryModeController : MonoBehaviour
         switch (currentStep)
         {
             case 0:
-                return "INTRO: Aquí va el texto inicial de la historia antes del Juego 1.";
+                return "INTRO: Aquí va el texto inicial antes del Juego 1.";
             case 1:
                 return "Texto después del Juego 1, antes del Juego 2.";
             case 2:
                 return "Texto después del Juego 2, antes del Juego 3.";
             case 3:
                 return "Texto después del Juego 3, antes del Juego 4.";
+            case 4:
+                return "Texto después del Juego 4, antes del final.";
             default:
                 return "";
         }
     }
+
 
     /// Llamado desde la escena de historia cuando se pulsa "Continuar"
     public void ContinueFromStory()
@@ -80,44 +83,50 @@ public class StoryModeController : MonoBehaviour
         switch (currentStep)
         {
             case 0:
-                // Intro → Juego 1 (Halloween)
-                SceneManager.LoadScene(game1SceneName); break;
+                SceneManager.LoadScene(game1SceneName);
+                break;
+
             case 1:
-                // Post Juego 1 → Juego 2 (Castanyera)
-                SceneManager.LoadScene(game2SceneName); break;
+                SceneManager.LoadScene(game2SceneName);
+                break;
+
             case 2:
-                // Post Juego 2 → Juego 3 (Luz Divina)
-                SceneManager.LoadScene(game3SceneName); break;
+                SceneManager.LoadScene(game3SceneName);
+                break;
+
             case 3:
-                SceneManager.LoadScene(finalSceneName); break;// Post Juego 3 → Directo a resumen final (HistoriaFinal) A posterior introduciremos los demas juegos
-                ;
-            /*
+                SceneManager.LoadScene(game4SceneName);
+                break;
+
             case 4:
-                SceneManager.LoadScene(game5SceneName); break; --> Este es VR
-            case 5:
-                SceneManager.LoadScene(game4SceneName) --> Este es el TioAR*/
+                SceneManager.LoadScene(finalSceneName);
+                break;
+
             default:
                 Debug.LogWarning("StoryModeController: paso fuera de rango.");
                 break;
         }
     }
 
+
+
     /// Llamar desde cada minijuego cuando termine (en modo historia)
     public void OnMiniGameFinished(int score)
     {
         totalScore += score;
-        currentStep++;   // Pasamos al siguiente bloque de historia
+        currentStep++;   // siguiente paso
 
         Debug.Log($"[StoryMode] MiniJuego terminado. score={score}, total={totalScore}, nextStep={currentStep}");
 
-        if (currentStep <= 3)
+        if (currentStep <= 4)
         {
             SceneManager.LoadScene(storySceneName);
         }
         else
         {
-            // Seguridad: si por error se llama más veces, vamos al resumen
             SceneManager.LoadScene(finalSceneName);
         }
     }
+
+
 }

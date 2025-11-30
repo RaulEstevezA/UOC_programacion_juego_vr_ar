@@ -687,9 +687,9 @@ MonoBehaviour:
   finalSceneName: HistoriaFinal
   game1SceneName: Halloween
   game2SceneName: Castanyera_scene
-  game3SceneName: main
-  game4SceneName: TioAR
-  game5SceneName: BasicScene
+  game3SceneName: LuzDivina
+  game4SceneName: BasicScene
+  game5SceneName: TioAR
   currentStep: 0
   totalScore: 0
   storyModeActive: 0

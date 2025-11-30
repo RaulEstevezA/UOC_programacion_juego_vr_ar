@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
@@ -8,7 +8,7 @@ public class MicrogameManager : MonoBehaviour
     public static MicrogameManager Instance { get; private set; }
 
     [Header("Config")]
-    [Tooltip("Duraci�n m�xima en segundos (300 = 5 min)")]
+    [Tooltip("Duración máxima en segundos (300 = 5 min)")]
     public float durationSeconds = 120f;
     [Tooltip("Vidas iniciales")]
     public int startingLives = 3;
@@ -33,7 +33,7 @@ public class MicrogameManager : MonoBehaviour
     float elapsed;
 
     // Si tu hub quiere leer el resultado:
-    public event Action<int, string> OnMicrogameEnded; // (puntuaci�n, motivo)
+    public event Action<int, string> OnMicrogameEnded; // (puntuación, motivo)
 
     void Awake()
     {
@@ -45,7 +45,17 @@ public class MicrogameManager : MonoBehaviour
     {
         if (gameOverPanel) gameOverPanel.SetActive(false);
         StartGame();
+
+        // → Vincular al modo historia si está activo
+        if (StoryModeController.Instance != null && StoryModeController.Instance.storyModeActive)
+        {
+            OnMicrogameEnded += (score, reason) =>
+            {
+                StoryModeController.Instance.OnMiniGameFinished(score);
+            };
+        }
     }
+
 
     public void StartGame()
     {
@@ -91,7 +101,7 @@ public class MicrogameManager : MonoBehaviour
         if (IsGameOver) return;
 
         Lives -= amount;
-        Debug.Log($"Jugador recibe {amount} de da�o. Vidas restantes: {Lives}");
+        Debug.Log($"Jugador recibe {amount} de daño. Vidas restantes: {Lives}");
 
         if (Lives <= 0)
         {
@@ -127,8 +137,23 @@ public class MicrogameManager : MonoBehaviour
             if (finalScoreText) finalScoreText.text = $"Score: {Score}";
         }
 
+        // Lanzamos la coroutine que avisará al StoryModeController después de 3 segundos
+        if (StoryModeController.Instance != null && StoryModeController.Instance.storyModeActive)
+        {
+            StartCoroutine(NotifyStoryModeAfterDelay(3f));
+        }
+
+        // Disparamos el evento normal
         OnMicrogameEnded?.Invoke(Score, reason);
     }
+
+    // Coroutine para esperar unos segundos antes de avisar al StoryModeController
+    private System.Collections.IEnumerator NotifyStoryModeAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StoryModeController.Instance.OnMiniGameFinished(Score);
+    }
+
 
     void CleanupObstacles()
     {
@@ -136,7 +161,7 @@ public class MicrogameManager : MonoBehaviour
         foreach (var m in movers) Destroy(m.gameObject);
     }
 
-    // Bot�n "Continuar" del panel
+    // Botón "Continuar" del panel
     public void OnPressContinue()
     {
         if (autoLoadNextOnContinue && !string.IsNullOrEmpty(nextSceneName))
