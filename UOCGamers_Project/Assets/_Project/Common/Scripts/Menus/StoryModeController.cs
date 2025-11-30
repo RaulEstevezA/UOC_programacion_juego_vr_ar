@@ -60,7 +60,7 @@ public class StoryModeController : MonoBehaviour
         switch (currentStep)
         {
             case 0:
-                return "Dicen que en España cada fiesta es una puerta.. Un niño curioso encuentra una calendario viejo en el desvan y de repente comienza un año de aventuras...";
+                return "Dicen que en España cada fiesta es una puerta.. Un niño curioso encuentra un calendario viejo en el desvan y de repente comienza un año de aventuras...";
             case 1:
                 return "Aqui huele a brasero y castañas.. uhm esa señora necesita mi ayuda para recojer los frutos.";
             case 2:
