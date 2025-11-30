@@ -66,9 +66,9 @@ public class StoryModeController : MonoBehaviour
             case 2:
                 return "Se acerca Semana Santa... Debo apagar todas las velas, es la única forma de adquirir la Luz Divina";
             case 3:
-                return "La navidad esta cerca... ¡Que poco me gusta! Necesito encontrar al Tió para salir de aqui";
-            case 4:
                 return "Al fin civilización... Running Of The Bulls. Hostia, ya entiendo, que no me pille el toro. Tengo que escapaaaar!";
+            case 4:
+                return "La navidad esta cerca... ¡Que poco me gusta! Necesito encontrar al Tió para salir de aqui"; 
             default:
                 return "";
         }
