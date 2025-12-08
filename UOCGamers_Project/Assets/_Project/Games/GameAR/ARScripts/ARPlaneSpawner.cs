@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class ARPlaneSpawner : MonoBehaviour
 {
+    // Referencia global al último Tió colocado
+    public static GameObject CurrentTio { get; private set; }
+
     public GameObject tioPrefab;
     public Camera arCamera;
 
@@ -24,15 +27,17 @@ public class ARPlaneSpawner : MonoBehaviour
         // Si no hay planos todavía, esperamos
         if (planeManager.trackables.count == 0) return;
 
-        // Obtenemos todos los planos
+        // Obtenemos todos los planos detectados
         List<ARPlane> planes = new List<ARPlane>();
         foreach (var p in planeManager.trackables)
             planes.Add(p);
 
+        if (planes.Count == 0) return;
+
         // Elegimos un plano aleatorio
         ARPlane randomPlane = planes[Random.Range(0, planes.Count)];
 
-        // Elegimos un punto aleatorio dentro del plano
+        // Elegimos un punto cerca del centro del plano
         Vector3 randomPoint = randomPlane.center
                               + new Vector3(
                                   Random.Range(-0.2f, 0.2f),
@@ -40,10 +45,13 @@ public class ARPlaneSpawner : MonoBehaviour
                                   Random.Range(-0.2f, 0.2f)
                                 );
 
-        // Colocar Tió sobre el plano
+        // Colocar el Tió sobre el plano
         tioInstance = Instantiate(tioPrefab, randomPoint, Quaternion.identity);
 
-        // Que mire hacia la cámara siempre
+        // Guardamos referencia global
+        CurrentTio = tioInstance;
+
+        // Marcamos que ya hemos colocado uno
         placed = true;
     }
 
@@ -54,10 +62,11 @@ public class ARPlaneSpawner : MonoBehaviour
 
         // Sticker AR: siempre orientado a la cámara
         Vector3 lookPos = arCamera.transform.position;
-        lookPos.y = tioInstance.transform.position.y; 
+        lookPos.y = tioInstance.transform.position.y;
         tioInstance.transform.LookAt(lookPos);
 
-        // Opcional: giro lateral (como pediste)
+        // Giro lateral para que se vea mejor
         tioInstance.transform.Rotate(0, -40, 0);
     }
 }
+
