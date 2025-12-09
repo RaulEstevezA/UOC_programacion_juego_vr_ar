@@ -21,6 +21,7 @@ public class ThreeLaneSpawner : MonoBehaviour
     public float maxSpawnTime = 120f;
     public float baseSpeed = 6f;
     public float speedIncrease = 2f;
+    public float spawnDistance = 10f; // distancia delante del jugador
 
     [Header("Opciones")]
     public bool autoRun = true;
@@ -31,7 +32,6 @@ public class ThreeLaneSpawner : MonoBehaviour
 
     void Awake()
     {
-        // Limpiamos los arrays de posibles null al inicio
         bullPrefabs = CleanArray(bullPrefabs);
         obstaclePrefabs = CleanArray(obstaclePrefabs);
     }
@@ -76,7 +76,6 @@ public class ThreeLaneSpawner : MonoBehaviour
             Transform lane = laneIdx == 0 ? leftLane : laneIdx == 1 ? centerLane : rightLane;
 
             GameObject prefab = GetRandomPrefab();
-
             if (prefab == null)
             {
                 Debug.LogError("❌ ERROR: No hay prefabs válidos para spawnear. Revisa los arrays.");
@@ -84,7 +83,10 @@ public class ThreeLaneSpawner : MonoBehaviour
                 continue;
             }
 
-            var go = Instantiate(prefab, lane.position, lane.rotation);
+            // Spawn delante del jugador para que se vean bien
+            Vector3 spawnPos = lane.position + Vector3.forward * spawnDistance;
+            spawnPos.y = lane.position.y; // mantener altura del carril
+            var go = Instantiate(prefab, spawnPos, lane.rotation);
 
             var mover = go.GetComponent<MoveTowardsPlayer>();
             if (mover)
@@ -115,10 +117,8 @@ public class ThreeLaneSpawner : MonoBehaviour
     GameObject GetRandomPrefab()
     {
         GameObject[] sourceArray = Random.value < bullProbability ? bullPrefabs : obstaclePrefabs;
-
         if (sourceArray == null || sourceArray.Length == 0) return null;
 
-        // Crear copia segura que no tenga nulls
         GameObject[] safeArray = System.Array.FindAll(sourceArray, item => item != null);
         if (safeArray.Length == 0) return null;
 
@@ -129,5 +129,13 @@ public class ThreeLaneSpawner : MonoBehaviour
     {
         if (array == null) return new GameObject[0];
         return System.Array.FindAll(array, item => item != null);
+    }
+
+    // ========================== GIZMOS PARA DEPURACION ==========================
+    void OnDrawGizmos()
+    {
+        if (leftLane != null) { Gizmos.color = Color.red; Gizmos.DrawSphere(leftLane.position, 0.3f); }
+        if (centerLane != null) { Gizmos.color = Color.green; Gizmos.DrawSphere(centerLane.position, 0.3f); }
+        if (rightLane != null) { Gizmos.color = Color.blue; Gizmos.DrawSphere(rightLane.position, 0.3f); }
     }
 }

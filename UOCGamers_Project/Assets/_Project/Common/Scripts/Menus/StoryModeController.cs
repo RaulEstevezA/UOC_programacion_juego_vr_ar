@@ -13,9 +13,9 @@ public class StoryModeController : MonoBehaviour
     [SerializeField] private string game1SceneName = "Halloween";
     [SerializeField] private string game2SceneName = "Castanyera_scene";
     [SerializeField] private string game3SceneName = "LuzDivina";
-    [SerializeField] private string game4SceneName = "GameAR"; //por ahora no se usara
+    
     [SerializeField] private string game5SceneName = "GameVR"; //por ahora no se usara
-
+    [SerializeField] private string game4SceneName = "TioAR"; //por ahora no se usara
     [Header("Progreso historia")]
     public int currentStep = 0;      // 0=intro, 1=post juego1, 2=post juego2, etc.
     public int totalScore = 0;
@@ -82,23 +82,13 @@ public class StoryModeController : MonoBehaviour
 
         switch (currentStep)
         {
-            case 0:
-                SceneManager.LoadScene(game1SceneName);
-                break;
+            case 0: SceneManager.LoadScene(game1SceneName); break;
+            case 1: SceneManager.LoadScene(game2SceneName); break;
+            case 2: SceneManager.LoadScene(game3SceneName); break;
+            case 3: SceneManager.LoadScene(game4SceneName); break;
+            case 4: SceneManager.LoadScene(game5SceneName); break;
 
-            case 1:
-                SceneManager.LoadScene(game2SceneName);
-                break;
-
-            case 2:
-                SceneManager.LoadScene(game3SceneName);
-                break;
-
-            case 3:
-                SceneManager.LoadScene(game4SceneName);
-                break;
-
-            case 4:
+            case 5:
                 SceneManager.LoadScene(finalSceneName);
                 break;
 
@@ -110,23 +100,25 @@ public class StoryModeController : MonoBehaviour
 
 
 
+
     /// Llamar desde cada minijuego cuando termine (en modo historia)
     public void OnMiniGameFinished(int score)
     {
         totalScore += score;
-        currentStep++;   // siguiente paso
+        currentStep++;
 
         Debug.Log($"[StoryMode] MiniJuego terminado. score={score}, total={totalScore}, nextStep={currentStep}");
 
-        if (currentStep <= 4)
+        if (currentStep <= 4)   // después de los juegos 1..4 vuelve a historia
         {
             SceneManager.LoadScene(storySceneName);
         }
-        else
+        else                    // step 5 → FINAL
         {
             SceneManager.LoadScene(finalSceneName);
         }
     }
+
 
 
 }
