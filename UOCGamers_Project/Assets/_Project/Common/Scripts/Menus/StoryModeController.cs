@@ -17,7 +17,7 @@ public class StoryModeController : MonoBehaviour
     [SerializeField] private string game5SceneName = "GameVR"; //por ahora no se usara
     [SerializeField] private string game4SceneName = "TioAR"; //por ahora no se usara
     [Header("Progreso historia")]
-    public int currentStep = 0;      // 0=intro, 1=post juego1, 2=post juego2, etc.
+    public int currentStep = 0;      // 0=Historia antes d halloween, 1=Historia antes de Castañera, 2=Historia antes LuzDivina, 3=Historia antes TioAR, 4= Historia antes VR, 5=Final
     public int totalScore = 0;
 
     [Tooltip("Indica si estamos en modo historia.")]

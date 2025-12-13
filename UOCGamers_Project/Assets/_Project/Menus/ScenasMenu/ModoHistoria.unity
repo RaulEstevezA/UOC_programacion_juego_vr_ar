@@ -163,11 +163,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 328641867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c65089212a91af84ab806a36ba793547, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e8f06e789f108447afd209b2380de5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 1717400979}
-  btnContinue: {fileID: 975056802}
+  background: {fileID: 0}
+  storyText: {fileID: 0}
+  btnContinuar: {fileID: 0}
+  stepsData: []
 --- !u!1 &514597766
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +267,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &560511639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560511640}
+  - component: {fileID: 560511641}
+  m_Layer: 5
+  m_Name: StorySceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &560511640
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560511639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1960216793}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &560511641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560511639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8f06e789f108447afd209b2380de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 2042005381}
+  storyText: {fileID: 1717400979}
+  btnContinuar: {fileID: 975056802}
+  stepsData:
+  - backgroundSprite: {fileID: 21300000, guid: edb54d64f467a0149adeef7bcc82b3c7, type: 3}
+    paragraphs:
+    - "Dicen que en Espa\xF1a cada fiesta es una puerta. Un ni\xF1o curioso encuentra
+      un calendario viejo en el desv\xE1n y de repente comienza Un A\xF1o de Aventuras
+      Festivas."
+    - "Llev\xE1ndole a los recuerdos de algunas de ellas, mientras tiene que superar
+      distintas pruebas relacionadas para poder volver."
+    - "La noche m\xE1s tenebrosa es la primera prueba a enfrentar."
+  - backgroundSprite: {fileID: 21300000, guid: a114c025a5662f24782a2aa786974979, type: 3}
+    paragraphs:
+    - "La segunda prueba que le aparece le recuerda a oto\xF1o, donde huele a brasero
+      y casta\xF1as, ah\xED La Casta\xF1era necesita ayuda para recolectar las casta\xF1as
+      que caen de los arboles."
+  - backgroundSprite: {fileID: 21300000, guid: 002d5c274098d3e46b3330552dbc8f0c, type: 3}
+    paragraphs:
+    - "En la tercera prueba hay muchas velas, le recuerda a la \u201CSemana Santa\u201D,
+      de repente le aparece un puzzle sin resolver llamado \u201CLuz Divina\u201D. "
+    - "Que debera hacer se pregunta. Cree que la soluci\xF3n es apagar todas las
+      velas para avanzar. A buscar el patr\xF3n se ha dicho!"
+  - backgroundSprite: {fileID: 21300000, guid: 858c4da24499ae94c89daf3e225173db, type: 3}
+    paragraphs:
+    - "En la cuarta prueba aparece una ciudad con un cartel que pone \u201CRunning
+      of the Bulls (VR)\u201D, le recuerda a una de las festividades llamada \u201CSan
+      Ferm\xEDn\u201D, tiene que ir superando a los toros que le van viniendo para
+      finalmente volver a su desv\xE1n. \"\xA1Esquivad a los toros!"
+  - backgroundSprite: {fileID: 21300000, guid: 52ed357de6c640341888ffad0454dc0f, type: 3}
+    paragraphs:
+    - "En la quinta prueba aparece un tronquito con una barretina que le sonr\xEDe,
+      tapado con una mantita, lo que le recuerda a la festividad llamada \u201CCaga
+      Ti\xF3 (AR)\u201D, ah\xED necesita buscar al Ti\xF3 y golpearlo para poder
+      salir de all\xED y volver a su desv\xE1n."
 --- !u!1 &638441900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1124,7 @@ RectTransform:
   - {fileID: 1122994278}
   - {fileID: 975056805}
   - {fileID: 328641868}
+  - {fileID: 560511640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1105,7 +1191,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: edb54d64f467a0149adeef7bcc82b3c7, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
