@@ -19,6 +19,16 @@ public class CastanyeraGameManager : MonoBehaviour
     [SerializeField] private Color warningTimerColor = Color.red;
     [SerializeField] private float warningTime = 5f;
 
+    [Header("UI - Lives")]
+    [SerializeField] private LivesUI livesUI;
+    [SerializeField] private int maxLives = 2;
+
+    private int currentLives;
+
+    [Header("UI - GameOver Buttons (Solo Modo Libre)")]
+    [SerializeField] private GameObject freeModeButtonsRoot;
+    [SerializeField] private string menuSceneName = "Menu";
+
     [Header("Referencias opcionales")]
     [SerializeField] private MonoBehaviour spawnerBehaviour;
     [SerializeField] private MonoBehaviour playerControllerBehaviour;
@@ -49,6 +59,9 @@ public class CastanyeraGameManager : MonoBehaviour
         UpdateScoreUI();
         if (gameOverPanel) gameOverPanel.SetActive(false);
 
+        //Botones modo libre ocultos al inicio
+        if (freeModeButtonsRoot) freeModeButtonsRoot.SetActive(false);
+
         // Iniciar partida
         remainingTime = Mathf.Max(1f, gameDurationSeconds);
         isRunning = true;
@@ -56,6 +69,10 @@ public class CastanyeraGameManager : MonoBehaviour
 
         UpdateTimerUI(remainingTime);
         if (timerText) timerText.color = normalTimerColor;
+
+        // Inicialización vidas
+        currentLives = Mathf.Max(1, maxLives);
+        if (livesUI != null) livesUI.SetLives(currentLives);
 
         // Arranque de sistemas
         SetSpawnerEnabled(true);
@@ -107,6 +124,19 @@ public class CastanyeraGameManager : MonoBehaviour
         UpdateScoreUI();
     }
 
+    public void PlayerHit()
+    {
+        if (IsGameOver) return;
+
+        currentLives--;
+        if (livesUI != null) livesUI.SetLives(currentLives);
+
+        if (currentLives <= 0)
+        {
+            EndGame(); // reutiliza el mismo flujo (modo libre / historia)
+        }
+    }
+
     public void EndGame()
     {
         if (IsGameOver) return;
@@ -136,6 +166,7 @@ public class CastanyeraGameManager : MonoBehaviour
         // MODO LIBRE 
         if (gameOverPanel) gameOverPanel.SetActive(true);
         if (finalScoreText) finalScoreText.text = $"Castañas: {finalScore}";
+        if (freeModeButtonsRoot) freeModeButtonsRoot.SetActive(true);
     }
 
     private IEnumerator EndGameStoryMode(int finalScore)
@@ -216,5 +247,10 @@ public class CastanyeraGameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(menuSceneName);
     }
 }
