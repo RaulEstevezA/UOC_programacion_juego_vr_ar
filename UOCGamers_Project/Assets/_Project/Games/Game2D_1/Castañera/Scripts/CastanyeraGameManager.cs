@@ -25,6 +25,10 @@ public class CastanyeraGameManager : MonoBehaviour
 
     private int currentLives;
 
+    [Header("UI - GameOver Buttons (Solo Modo Libre)")]
+    [SerializeField] private GameObject freeModeButtonsRoot;
+    [SerializeField] private string menuSceneName = "Menu";
+
     [Header("Referencias opcionales")]
     [SerializeField] private MonoBehaviour spawnerBehaviour;
     [SerializeField] private MonoBehaviour playerControllerBehaviour;
@@ -54,6 +58,9 @@ public class CastanyeraGameManager : MonoBehaviour
         // Estado inicial UI
         UpdateScoreUI();
         if (gameOverPanel) gameOverPanel.SetActive(false);
+
+        //Botones modo libre ocultos al inicio
+        if (freeModeButtonsRoot) freeModeButtonsRoot.SetActive(false);
 
         // Iniciar partida
         remainingTime = Mathf.Max(1f, gameDurationSeconds);
@@ -159,6 +166,7 @@ public class CastanyeraGameManager : MonoBehaviour
         // MODO LIBRE 
         if (gameOverPanel) gameOverPanel.SetActive(true);
         if (finalScoreText) finalScoreText.text = $"Castañas: {finalScore}";
+        if (freeModeButtonsRoot) freeModeButtonsRoot.SetActive(true);
     }
 
     private IEnumerator EndGameStoryMode(int finalScore)
@@ -239,5 +247,10 @@ public class CastanyeraGameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(menuSceneName);
     }
 }

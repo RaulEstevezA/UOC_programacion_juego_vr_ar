@@ -44,6 +44,13 @@ public class StorySceneUIController : MonoBehaviour
             return;
         }
 
+        if (!StoryModeController.Instance.storyModeActive)
+        {
+            // Opcional: desactivar este UI para que no moleste ni intercepte clicks
+            gameObject.SetActive(false);
+            return;
+        }
+
         int step = StoryModeController.Instance.currentStep;
 
         if (stepsData == null || stepsData.Length == 0)
@@ -77,10 +84,14 @@ public class StorySceneUIController : MonoBehaviour
 
     private void OnClickContinuar()
     {
-        // Si no hay datos aún, intenta continuar por seguridad
-        if (StoryModeController.Instance == null || currentData == null)
+        // Solo funciona si estamos en modo historia
+        if (StoryModeController.Instance == null || !StoryModeController.Instance.storyModeActive)
+            return;
+
+        // Si no hay datos, no podemos continuar
+        if (currentData == null)
         {
-            Debug.LogWarning("[StorySceneUIController] Sin StoryModeController o data. No se puede continuar flujo real.");
+            Debug.LogWarning("[StorySceneUIController] Sin data (currentData). No se puede continuar.");
             return;
         }
 
@@ -89,7 +100,8 @@ public class StorySceneUIController : MonoBehaviour
 
         if (currentData.paragraphs != null && currentParagraphIndex < currentData.paragraphs.Length)
         {
-            storyText.text = currentData.paragraphs[currentParagraphIndex];
+            if (storyText != null)
+                storyText.text = currentData.paragraphs[currentParagraphIndex];
         }
         else
         {
@@ -97,4 +109,5 @@ public class StorySceneUIController : MonoBehaviour
             StoryModeController.Instance.ContinueFromStory();
         }
     }
+
 }
