@@ -169,7 +169,38 @@ MonoBehaviour:
   background: {fileID: 0}
   storyText: {fileID: 0}
   btnContinuar: {fileID: 0}
-  stepsData: []
+  stepsData:
+  - backgroundSprite: {fileID: 0}
+    paragraphs:
+    - "Dicen que en Espa\xF1a cada fiesta es una puerta. Un ni\xF1o curioso encuentra
+      un calendario viejo en el desv\xE1n y de repente comienza Un A\xF1o de Aventuras
+      Festivas."
+    - "Llev\xE1ndole a los recuerdos de algunas de ellas, mientras tiene que superar
+      distintas pruebas relacionadas para poder volver."
+    - "La noche m\xE1s tenebrosa es la primera prueba a enfrentar."
+  - backgroundSprite: {fileID: 0}
+    paragraphs:
+    - "La segunda prueba que le aparece le recuerda a oto\xF1o, donde huele a brasero
+      y casta\xF1as, ah\xED La Casta\xF1era necesita ayuda para recolectar las casta\xF1as
+      que caen de los arboles."
+  - backgroundSprite: {fileID: 0}
+    paragraphs:
+    - "En la tercera prueba hay muchas velas, le recuerda a la \u201CSemana Santa\u201D,
+      de repente le aparece un puzzle sin resolver llamado \u201CLuz Divina\u201D. "
+    - "Que debera hacer se pregunta. Cree que la soluci\xF3n es apagar todas las
+      velas para avanzar. A buscar el patr\xF3n se ha dicho!"
+  - backgroundSprite: {fileID: 0}
+    paragraphs:
+    - "En la cuarta prueba aparece una ciudad con un cartel que pone \u201CRunning
+      of the Bulls (VR)\u201D, le recuerda a una de las festividades llamada \u201CSan
+      Ferm\xEDn\u201D, tiene que ir superando a los toros que le van viniendo para
+      finalmente volver a su desv\xE1n. \"\xA1Esquivad a los toros!"
+  - backgroundSprite: {fileID: 0}
+    paragraphs:
+    - "En la quinta prueba aparece un tronquito con una barretina que le sonr\xEDe,
+      tapado con una mantita, lo que le recuerda a la festividad llamada \u201CCaga
+      Ti\xF3 (AR)\u201D, ah\xED necesita buscar al Ti\xF3 y golpearlo para poder
+      salir de all\xED y volver a su desv\xE1n."
 --- !u!1 &514597766
 GameObject:
   m_ObjectHideFlags: 0

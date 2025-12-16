@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -688,8 +688,8 @@ MonoBehaviour:
   game1SceneName: Halloween
   game2SceneName: Castanyera_scene
   game3SceneName: LuzDivina
-  game4SceneName: BasicScene
   game5SceneName: TioAR
+  game4SceneName: BasicScene
   currentStep: 0
   totalScore: 0
   storyModeActive: 0
