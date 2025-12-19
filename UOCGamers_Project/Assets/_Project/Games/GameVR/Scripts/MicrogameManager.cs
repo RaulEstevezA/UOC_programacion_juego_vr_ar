@@ -2,17 +2,16 @@
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.XR.Management;
+using System.Collections;
 
 public class MicrogameManager : MonoBehaviour
 {
     public static MicrogameManager Instance { get; private set; }
 
     [Header("Config")]
-    [Tooltip("Duración máxima en segundos (300 = 5 min)")]
     public float durationSeconds = 120f;
-    [Tooltip("Vidas iniciales")]
     public int startingLives = 3;
-    [Tooltip("Spawners controlados por este microjuego")]
     public ThreeLaneSpawner[] spawners;
 
     [Header("UI")]
@@ -23,8 +22,8 @@ public class MicrogameManager : MonoBehaviour
     public TextMeshProUGUI finalScoreText;
 
     [Header("Flujo (opcional)")]
-    public string nextSceneName;           // escena del hub o del siguiente microjuego
-    public bool autoLoadNextOnContinue;    // si quieres que cargue al pulsar Continuar
+    public string nextSceneName;
+    public bool autoLoadNextOnContinue;
 
     public bool IsRunning { get; private set; }
     public bool IsGameOver { get; private set; }
@@ -32,8 +31,7 @@ public class MicrogameManager : MonoBehaviour
     public int Lives { get; private set; }
     float elapsed;
 
-    // Si tu hub quiere leer el resultado:
-    public event Action<int, string> OnMicrogameEnded; // (puntuación, motivo)
+    public event Action<int, string> OnMicrogameEnded;
 
     void Awake()
     {
@@ -44,9 +42,12 @@ public class MicrogameManager : MonoBehaviour
     void Start()
     {
         if (gameOverPanel) gameOverPanel.SetActive(false);
+
+        // 🕶️ ACTIVAR VR AL ENTRAR AL MICROJUEGO
+        StartCoroutine(StartVR());
+
         StartGame();
 
-        // → Vincular al modo historia si está activo
         if (StoryModeController.Instance != null && StoryModeController.Instance.storyModeActive)
         {
             OnMicrogameEnded += (score, reason) =>
@@ -56,6 +57,31 @@ public class MicrogameManager : MonoBehaviour
         }
     }
 
+    // 🕶️ ---------- VR ----------
+    IEnumerator StartVR()
+    {
+        yield return XRGeneralSettings.Instance.Manager.InitializeLoader();
+
+        if (XRGeneralSettings.Instance.Manager.activeLoader == null)
+        {
+            Debug.LogError("❌ No se pudo iniciar XR");
+            yield break;
+        }
+
+        XRGeneralSettings.Instance.Manager.StartSubsystems();
+        Debug.Log("🕶️ VR ACTIVADO");
+    }
+
+    void StopVR()
+    {
+        if (XRGeneralSettings.Instance.Manager.activeLoader == null)
+            return;
+
+        XRGeneralSettings.Instance.Manager.StopSubsystems();
+        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+        Debug.Log("⛔ VR DESACTIVADO");
+    }
+    // 🕶️ ------------------------
 
     public void StartGame()
     {
@@ -66,7 +92,6 @@ public class MicrogameManager : MonoBehaviour
         elapsed = 0f;
         UpdateUI();
 
-        // Enciende spawners
         foreach (var sp in spawners) if (sp) sp.StartSpawning();
     }
 
@@ -101,18 +126,15 @@ public class MicrogameManager : MonoBehaviour
         if (IsGameOver) return;
 
         Lives -= amount;
-        Debug.Log($"Jugador recibe {amount} de daño. Vidas restantes: {Lives}");
 
         if (Lives <= 0)
         {
             Lives = 0;
-            Debug.Log(" Vidas agotadas. Fin del juego: OutOfLives");
             EndGame("OutOfLives");
         }
 
         UpdateUI();
     }
-
 
     void UpdateUI()
     {
@@ -127,7 +149,6 @@ public class MicrogameManager : MonoBehaviour
         IsGameOver = true;
         IsRunning = false;
 
-        // Apaga spawners y limpia restos
         foreach (var sp in spawners) if (sp) sp.StopSpawning();
         CleanupObstacles();
 
@@ -137,23 +158,22 @@ public class MicrogameManager : MonoBehaviour
             if (finalScoreText) finalScoreText.text = $"Score: {Score}";
         }
 
-        // Lanzamos la coroutine que avisará al StoryModeController después de 3 segundos
+        // 🕶️ DESACTIVAR VR AL TERMINAR
+        StopVR();
+
         if (StoryModeController.Instance != null && StoryModeController.Instance.storyModeActive)
         {
             StartCoroutine(NotifyStoryModeAfterDelay(3f));
         }
 
-        // Disparamos el evento normal
         OnMicrogameEnded?.Invoke(Score, reason);
     }
 
-    // Coroutine para esperar unos segundos antes de avisar al StoryModeController
-    private System.Collections.IEnumerator NotifyStoryModeAfterDelay(float delay)
+    private IEnumerator NotifyStoryModeAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         StoryModeController.Instance.OnMiniGameFinished(Score);
     }
-
 
     void CleanupObstacles()
     {
@@ -161,11 +181,15 @@ public class MicrogameManager : MonoBehaviour
         foreach (var m in movers) Destroy(m.gameObject);
     }
 
-    // Botón "Continuar" del panel
     public void OnPressContinue()
     {
         if (autoLoadNextOnContinue && !string.IsNullOrEmpty(nextSceneName))
             SceneManager.LoadScene(nextSceneName);
-        // Si no, tu hub puede escuchar OnMicrogameEnded o leer MicrogameManager.Instance.Score
+    }
+
+    void OnDestroy()
+    {
+        // Seguridad extra
+        StopVR();
     }
 }
