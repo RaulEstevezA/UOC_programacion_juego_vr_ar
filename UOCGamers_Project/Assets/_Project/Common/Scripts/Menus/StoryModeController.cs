@@ -14,8 +14,8 @@ public class StoryModeController : MonoBehaviour
     [SerializeField] private string game2SceneName = "Castanyera_scene";
     [SerializeField] private string game3SceneName = "LuzDivina";
     
-    [SerializeField] private string game5SceneName = "GameVR"; //por ahora no se usara
-    [SerializeField] private string game4SceneName = "TioAR"; //por ahora no se usara
+    [SerializeField] private string game4SceneName = "BasicScene"; 
+    //[SerializeField] private string game4SceneName = "TioAR"; //por ahora no se usara
     [Header("Progreso historia")]
     public int currentStep = 0;      // 0=Historia antes d halloween, 1=Historia antes de Castañera, 2=Historia antes LuzDivina, 3=Historia antes TioAR, 4= Historia antes VR, 5=Final
     public int totalScore = 0;
@@ -67,8 +67,6 @@ public class StoryModeController : MonoBehaviour
                 return "Se acerca Semana Santa... Debo apagar todas las velas, es la única forma de adquirir la Luz Divina";
             case 3:
                 return "Al fin civilización... Running Of The Bulls. Hostia, ya entiendo, que no me pille el toro. Tengo que escapaaaar!";
-            case 4:
-                return "La navidad esta cerca... ¡Que poco me gusta! Necesito encontrar al Tió para salir de aqui"; 
             default:
                 return "";
         }
@@ -86,9 +84,8 @@ public class StoryModeController : MonoBehaviour
             case 1: SceneManager.LoadScene(game2SceneName); break;
             case 2: SceneManager.LoadScene(game3SceneName); break;
             case 3: SceneManager.LoadScene(game4SceneName); break;
-            case 4: SceneManager.LoadScene(game5SceneName); break;
 
-            case 5:
+            case 4:
                 SceneManager.LoadScene(finalSceneName);
                 break;
 
@@ -109,7 +106,7 @@ public class StoryModeController : MonoBehaviour
 
         Debug.Log($"[StoryMode] MiniJuego terminado. score={score}, total={totalScore}, nextStep={currentStep}");
 
-        if (currentStep <= 4)   // después de los juegos 1..4 vuelve a historia
+        if (currentStep <= 3)   // después de los juegos 1..4 vuelve a historia
         {
             SceneManager.LoadScene(storySceneName);
         }

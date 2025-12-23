@@ -195,12 +195,6 @@ MonoBehaviour:
       of the Bulls (VR)\u201D, le recuerda a una de las festividades llamada \u201CSan
       Ferm\xEDn\u201D, tiene que ir superando a los toros que le van viniendo para
       finalmente volver a su desv\xE1n. \"\xA1Esquivad a los toros!"
-  - backgroundSprite: {fileID: 0}
-    paragraphs:
-    - "En la quinta prueba aparece un tronquito con una barretina que le sonr\xEDe,
-      tapado con una mantita, lo que le recuerda a la festividad llamada \u201CCaga
-      Ti\xF3 (AR)\u201D, ah\xED necesita buscar al Ti\xF3 y golpearlo para poder
-      salir de all\xED y volver a su desv\xE1n."
 --- !u!1 &514597766
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +319,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1960216793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -375,12 +369,6 @@ MonoBehaviour:
       of the Bulls (VR)\u201D, le recuerda a una de las festividades llamada \u201CSan
       Ferm\xEDn\u201D, tiene que ir superando a los toros que le van viniendo para
       finalmente volver a su desv\xE1n. \"\xA1Esquivad a los toros!"
-  - backgroundSprite: {fileID: 21300000, guid: 52ed357de6c640341888ffad0454dc0f, type: 3}
-    paragraphs:
-    - "En la quinta prueba aparece un tronquito con una barretina que le sonr\xEDe,
-      tapado con una mantita, lo que le recuerda a la festividad llamada \u201CCaga
-      Ti\xF3 (AR)\u201D, ah\xED necesita buscar al Ti\xF3 y golpearlo para poder
-      salir de all\xED y volver a su desv\xE1n."
 --- !u!1 &638441900
 GameObject:
   m_ObjectHideFlags: 0

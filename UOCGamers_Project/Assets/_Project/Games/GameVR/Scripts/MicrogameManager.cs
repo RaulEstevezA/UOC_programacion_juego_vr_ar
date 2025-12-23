@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.XR.Management;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MicrogameManager : MonoBehaviour
 {
@@ -16,10 +17,12 @@ public class MicrogameManager : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI livesText;
     public TextMeshProUGUI timerText;
     public GameObject gameOverPanel;
     public TextMeshProUGUI finalScoreText;
+
+    [Header("Vidas (UI Images)")]
+    public Image[] lifeIcons; // San1 y San2 → representan las vidas extra
 
     [Header("Flujo (opcional)")]
     public string nextSceneName;
@@ -88,9 +91,11 @@ public class MicrogameManager : MonoBehaviour
         IsGameOver = false;
         IsRunning = true;
         Score = 0;
-        Lives = startingLives;
+        Lives = startingLives; // 3
         elapsed = 0f;
+
         UpdateUI();
+        UpdateLivesUI(); // actualiza iconos al inicio
 
         foreach (var sp in spawners) if (sp) sp.StartSpawning();
     }
@@ -134,14 +139,31 @@ public class MicrogameManager : MonoBehaviour
         }
 
         UpdateUI();
+        UpdateLivesUI(); // actualiza iconos al perder vida
     }
 
     void UpdateUI()
     {
         if (scoreText) scoreText.text = $"Puntos: {Score}";
-        if (livesText) livesText.text = $"Vidas: {Lives}";
         if (timerText) timerText.text = FormatTime(Mathf.Max(0f, durationSeconds - elapsed));
     }
+
+    void UpdateLivesUI()
+    {
+        if (lifeIcons == null || lifeIcons.Length == 0) return;
+
+        int livesLeft = Lives - 1; // excluimos la vida que se está jugando
+
+        for (int i = 0; i < lifeIcons.Length; i++)
+        {
+            if (lifeIcons[i] != null)
+            {
+                // Activar solo si hay suficiente vidas extras
+                lifeIcons[i].gameObject.SetActive(i < livesLeft);
+            }
+        }
+    }
+
 
     public void EndGame(string reason)
     {
@@ -177,8 +199,13 @@ public class MicrogameManager : MonoBehaviour
 
     void CleanupObstacles()
     {
-        var movers = FindObjectsOfType<MoveTowardsPlayer>();
-        foreach (var m in movers) Destroy(m.gameObject);
+        // Reemplazo del método FindObjectsOfType<MoveTowardsPlayer>() deprecated
+        MoveTowardsPlayer[] movers = GameObject.FindObjectsOfType<MoveTowardsPlayer>(true); // true para incluir inactivos
+        foreach (var m in movers)
+        {
+            if (m != null)
+                Destroy(m.gameObject);
+        }
     }
 
     public void OnPressContinue()
@@ -189,7 +216,6 @@ public class MicrogameManager : MonoBehaviour
 
     void OnDestroy()
     {
-        // Seguridad extra
         StopVR();
     }
 }
