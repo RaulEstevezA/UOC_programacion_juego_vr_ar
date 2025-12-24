@@ -35,6 +35,10 @@ public class MicrogameManager : MonoBehaviour
     float elapsed;
 
     public event Action<int, string> OnMicrogameEnded;
+    [Header("Audio")]
+    public AudioClip sanfermin;
+    private AudioSource musicSource;
+
 
     void Awake()
     {
@@ -44,6 +48,12 @@ public class MicrogameManager : MonoBehaviour
 
     void Start()
     {
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.clip = sanfermin;
+        musicSource.loop = true;
+        musicSource.volume = 0.4f;
+        musicSource.spatialBlend = 0f;
+        musicSource.Play();
         if (gameOverPanel) gameOverPanel.SetActive(false);
 
         // 🕶️ ACTIVAR VR AL ENTRAR AL MICROJUEGO
@@ -179,7 +189,8 @@ public class MicrogameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
             if (finalScoreText) finalScoreText.text = $"Score: {Score}";
         }
-
+        if (musicSource != null && musicSource.isPlaying)
+            musicSource.Stop();
         // 🕶️ DESACTIVAR VR AL TERMINAR
         StopVR();
 
@@ -199,14 +210,19 @@ public class MicrogameManager : MonoBehaviour
 
     void CleanupObstacles()
     {
-        // Reemplazo del método FindObjectsOfType<MoveTowardsPlayer>() deprecated
-        MoveTowardsPlayer[] movers = GameObject.FindObjectsOfType<MoveTowardsPlayer>(true); // true para incluir inactivos
+        MoveTowardsPlayer[] movers =
+            GameObject.FindObjectsByType<MoveTowardsPlayer>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            );
+
         foreach (var m in movers)
         {
             if (m != null)
                 Destroy(m.gameObject);
         }
     }
+
 
     public void OnPressContinue()
     {

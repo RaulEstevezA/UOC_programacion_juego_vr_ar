@@ -529,6 +529,7 @@ MonoBehaviour:
   - {fileID: 1954758967}
   nextSceneName: 
   autoLoadNextOnContinue: 0
+  sanfermin: {fileID: 8300000, guid: 10a072e5257cd9f4bb9cf72bdd97733f, type: 3}
 --- !u!4 &440686579
 Transform:
   m_ObjectHideFlags: 0
