@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class MuroInferior : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class MuroInferior : MonoBehaviour
     private float tiempoRestante;
     private bool juegoTerminado = false;
     private bool parpadeando = false;
+    [Header("Botones modo libre")]
+    [SerializeField] private GameObject freeModeButtonsRoot;
+    [SerializeField] private string menuSceneName = "Menu";
+
 
     private void Start()
     {
@@ -23,6 +29,7 @@ public class MuroInferior : MonoBehaviour
             txtGameOver.SetActive(false);
         if (txtTiempo != null)
             txtTiempo.text = "Tiempo restante: " + Mathf.Ceil(tiempoRestante);
+        
     }
 
     private void Update()
@@ -78,28 +85,29 @@ public class MuroInferior : MonoBehaviour
         juegoTerminado = true;
         Pelota.SetActive(false);
 
-        if (txtGameOver != null)
-            txtGameOver.SetActive(true);
-
-        // Obtener puntuación minijuego
+        // 1. Obtenemos puntos
         PuntuacionManager pm = FindFirstObjectByType<PuntuacionManager>();
         int puntosParciales = (pm != null) ? pm.ObtenerPuntuacion() : 0;
-
-        // Guardar puntos parciales
         PuntosGlobales.puntosParciales = puntosParciales;
 
-        // --- MODO HISTORIA ---
-        if (StoryModeController.Instance != null &&
-        StoryModeController.Instance.storyModeActive)
+        // 2. DETECCIÓN DE MODO (Con Log de control)
+        if (StoryModeController.Instance != null && StoryModeController.Instance.storyModeActive)
         {
-            // Mostrar puntos y esperar antes de cambiar la escena
-            StartCoroutine(FinJuegoModoHistoria(puntosParciales));
-            return;
-        }
+            Debug.Log("<color=cyan>MODO DETECTADO: HISTORIA</color>");
 
-        //  MODO LIBRE 
-        StartCoroutine(MostrarResultadoTrasPausa(puntosParciales));
-        Time.timeScale = 0f; // pausa el juego
+            if (txtGameOver != null) txtGameOver.SetActive(true);
+            StartCoroutine(FinJuegoModoHistoria(puntosParciales));
+        }
+        else
+        {
+            Debug.Log("<color=yellow>MODO DETECTADO: LIBRE (Activando secuencia de botones)</color>");
+
+            // Limpiamos cualquier rastro visual previo
+            if (txtGameOver != null) txtGameOver.SetActive(true); // Se apaga luego en la corrutina
+
+            // Iniciamos la corrutina que mostrará los botones
+            StartCoroutine(MostrarResultadoTrasPausa(puntosParciales));
+        }
     }
 
     private IEnumerator FinJuegoModoHistoria(int puntos)
@@ -123,18 +131,43 @@ public class MuroInferior : MonoBehaviour
 
     private IEnumerator MostrarResultadoTrasPausa(int puntos)
     {
-        // Espera 3 segundos de reloj real aunque el juego esté pausado
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(2f);
 
-        // Oculta Game Over
-        if (txtGameOver != null)
-            txtGameOver.SetActive(false);
+        if (txtGameOver != null) txtGameOver.SetActive(false);
 
-        // Muestra el texto de resultado con los puntos dinámicos
         if (txtResultadoFinal != null)
         {
             txtResultadoFinal.gameObject.SetActive(true);
             txtResultadoFinal.text = "RESULTADO\nPUNTOS OBTENIDOS: " + puntos;
         }
+
+        yield return new WaitForSecondsRealtime(3f);
+
+        if (txtResultadoFinal != null) txtResultadoFinal.gameObject.SetActive(false);
+
+        if (freeModeButtonsRoot)
+        {
+            freeModeButtonsRoot.SetActive(true);
+            freeModeButtonsRoot.transform.SetAsLastSibling();
+            Debug.Log("Botones activados y movidos al frente.");
+        }
+
+
+        // Esperamos un frame para que Unity los pinte antes de pausar
+        yield return null;
+        
+        Time.timeScale = 0.0001f;
     }
+    public void Reintentar()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void VolverAlMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(menuSceneName);
+    }
+
 }
