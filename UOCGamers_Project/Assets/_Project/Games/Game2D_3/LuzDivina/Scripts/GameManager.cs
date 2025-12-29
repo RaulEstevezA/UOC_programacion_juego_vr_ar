@@ -8,11 +8,24 @@ public class GameManager : MonoBehaviour
 {
     [Header("Referencias de escena")]
     [SerializeField] private BoardController board;      // arrastra el Board
-    [SerializeField] private Button resetButton;         // arrastra "Reiniciar"
+    [SerializeField] private Button resetButton;         // botón "Reiniciar" (el de HUD si lo tienes)
     [SerializeField] private TextMeshProUGUI timeText;   // "Tiempo: 120"
     [SerializeField] private TextMeshProUGUI puzzleText; // "Puzzle 0/3"
     [SerializeField] private GameObject winPanel;        // panel de victoria FINAL
     [SerializeField] private GameObject gameOverPanel;   // panel de game over
+
+    [Header("Botones GameOver (listeners)")]
+    // Estos botones van DENTRO del gameOverPanel
+    [SerializeField] private Button gameOverRestartButton;
+    [SerializeField] private Button gameOverMenuButton;
+
+    [Header("UI GameOver (visibilidad por modo)")]
+    // Arrastra AQUÍ el GameObject del botón (Btn_Reiniciar y Btn_VolverMenu)
+    [SerializeField] private GameObject btnReiniciarGO;
+    [SerializeField] private GameObject btnVolverMenuGO;
+
+    [Header("Escenas")]
+    [SerializeField] private int menuLibreBuildIndex = 4;
 
     [Header("Logica de juego")]
     [SerializeField] private int startTimeSeconds = 120;
@@ -26,14 +39,32 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        // Botón reset HUD (si existe)
         if (resetButton)
         {
             resetButton.onClick.RemoveAllListeners();
             resetButton.onClick.AddListener(OnPressReset);
         }
 
+        // Suscripción al board
         if (board)
             board.OnBoardSolved += HandleBoardSolved;
+
+        // Botones del panel de GameOver (si los asignas por Inspector)
+        if (gameOverRestartButton)
+        {
+            gameOverRestartButton.onClick.RemoveAllListeners();
+            gameOverRestartButton.onClick.AddListener(ReiniciarDesdeGameOver);
+        }
+
+        if (gameOverMenuButton)
+        {
+            gameOverMenuButton.onClick.RemoveAllListeners();
+            gameOverMenuButton.onClick.AddListener(VolverAMenuLibre);
+        }
+
+        // Estado inicial de visibilidad (por si entras en historia y se ve desde el principio)
+        RefreshEndButtonsVisibility();
     }
 
     private void OnDestroy()
@@ -48,7 +79,7 @@ public class GameManager : MonoBehaviour
     {
         levelWon = false;
         gameOver = false;
-        puzzlesSolved = 0; // empezamos desde el puzzle 0
+        puzzlesSolved = 0;
 
         if (winPanel) winPanel.SetActive(false);
         if (gameOverPanel) gameOverPanel.SetActive(false);
@@ -56,7 +87,7 @@ public class GameManager : MonoBehaviour
         if (board)
         {
             board.ResetBoard();
-            board.SetInteractable(true); // habilita clicks
+            board.SetInteractable(true);
         }
 
         if (timerCo != null) StopCoroutine(timerCo);
@@ -76,7 +107,6 @@ public class GameManager : MonoBehaviour
             yield return wait;
         }
 
-        // Si salimos del bucle por tiempo agotado y no hay victoria:
         if (!levelWon && !gameOver && timeLeft <= 0f)
             ShowGameOver();
     }
@@ -84,9 +114,20 @@ public class GameManager : MonoBehaviour
     private void ShowGameOver()
     {
         gameOver = true;
-        if (timerCo != null) { StopCoroutine(timerCo); timerCo = null; }
-        if (board) board.SetInteractable(false); // bloquea clicks
+
+        if (timerCo != null)
+        {
+            StopCoroutine(timerCo);
+            timerCo = null;
+        }
+
+        if (board) board.SetInteractable(false);
+
         if (gameOverPanel) gameOverPanel.SetActive(true);
+
+        // ✅ Oculta/enseña botones según modo
+        RefreshEndButtonsVisibility();
+
         Debug.Log("GAME OVER");
 
         HandleEndOfMinigame(false);
@@ -96,32 +137,37 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver) return;
 
-        // Sumamos +15 segundos por puzzle completado
+        // +15s por puzzle completado
         timeLeft += 15f;
-        if (timeLeft > startTimeSeconds)
-            startTimeSeconds = Mathf.CeilToInt(timeLeft); 
 
-        // Marcamos que hemos resuelto un puzzle
+        if (timeLeft > startTimeSeconds)
+            startTimeSeconds = Mathf.CeilToInt(timeLeft);
+
         puzzlesSolved = Mathf.Min(totalPuzzles, puzzlesSolved + 1);
         UpdateHud();
 
         Debug.Log("+15 segundos por completar el puzzle! Puzzle " + puzzlesSolved + "/" + totalPuzzles);
 
-        // Si hemos completado TODOS los puzzles, victoria final
         if (puzzlesSolved >= totalPuzzles)
         {
             levelWon = true;
 
-            if (timerCo != null) { StopCoroutine(timerCo); timerCo = null; }
+            if (timerCo != null)
+            {
+                StopCoroutine(timerCo);
+                timerCo = null;
+            }
+
             if (board) board.SetInteractable(false);
             if (winPanel) winPanel.SetActive(true);
 
-            HandleEndOfMinigame(true); // victoria final
+            // (Opcional) Si en el winPanel también hay botones y quieres ocultarlos en historia:
+            // RefreshEndButtonsVisibility();
+
+            HandleEndOfMinigame(true);
         }
         else
         {
-            // Solo completado un puzzle intermedio:
-            // preparamos el siguiente puzzle y seguimos con el mismo contador de tiempo.
             if (board)
             {
                 board.ResetBoard();
@@ -132,7 +178,6 @@ public class GameManager : MonoBehaviour
 
     private void HandleEndOfMinigame(bool victory)
     {
-        // Mantener tu puntuacion original: 10 puntos por puzzle
         int finalScore = puzzlesSolved * 10;
 
         // --- MODO HISTORIA ---
@@ -157,11 +202,47 @@ public class GameManager : MonoBehaviour
 
     private void OnPressReset() => StartLevel();
 
+    // =========================
+    // BOTONES DEL GAME OVER
+    // =========================
+
+    public void ReiniciarDesdeGameOver()
+    {
+        StartLevel();
+    }
+
+    public void VolverAMenuLibre()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(menuLibreBuildIndex);
+    }
+
+    // =========================
+    // VISIBILIDAD POR MODO
+    // =========================
+
+    private bool IsStoryMode()
+    {
+        return StoryModeController.Instance != null &&
+               StoryModeController.Instance.storyModeActive;
+    }
+
+    private void RefreshEndButtonsVisibility()
+    {
+        bool story = IsStoryMode();
+
+        // En historia: NO mostramos volver a menú libre
+        if (btnVolverMenuGO) btnVolverMenuGO.SetActive(!story);
+
+        // En historia: por defecto oculto también Reiniciar (cámbialo si lo quieres)
+        if (btnReiniciarGO) btnReiniciarGO.SetActive(!story);
+        // Si QUIERES que Reiniciar sí se vea en historia, usa esto:
+        // if (btnReiniciarGO) btnReiniciarGO.SetActive(true);
+    }
+
     private void UpdateHud()
     {
         if (timeText) timeText.text = "Tiempo: " + Mathf.CeilToInt(timeLeft);
         if (puzzleText) puzzleText.text = "Puzzle " + puzzlesSolved + "/" + Mathf.Max(1, totalPuzzles);
     }
 }
-
-
