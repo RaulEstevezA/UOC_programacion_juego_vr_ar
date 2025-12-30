@@ -187,21 +187,14 @@ public class MicrogameManager : MonoBehaviour
         foreach (var sp in spawners) if (sp) sp.StopSpawning();
         CleanupObstacles();
 
-        if (gameOverPanel)
-        {
-            gameOverPanel.SetActive(true);
-            if (finalScoreText) finalScoreText.text = $"Score: {Score}";
-        }
-        if (freeModeButtonsRoot)
-        {
-            freeModeButtonsRoot.SetActive(true);
-            freeModeButtonsRoot.transform.SetAsLastSibling();
-            Debug.Log("FreeModeButtonsRoot ACTIVADO");
-        }
         if (musicSource != null && musicSource.isPlaying)
             musicSource.Stop();
+
         // 🕶️ DESACTIVAR VR AL TERMINAR
         StopVR();
+
+        // Iniciamos la secuencia de espera para la UI
+        StartCoroutine(ShowGameOverSequence());
 
         if (StoryModeController.Instance != null && StoryModeController.Instance.storyModeActive)
         {
@@ -210,7 +203,33 @@ public class MicrogameManager : MonoBehaviour
 
         OnMicrogameEnded?.Invoke(Score, reason);
     }
+    private IEnumerator ShowGameOverSequence()
+    {
+        // 1. Mostrar el panel de Game Over
+        if (gameOverPanel)
+        {
+            gameOverPanel.SetActive(true);
+            if (finalScoreText) finalScoreText.text = $"Score: {Score}";
+            Debug.Log("Mostrando Game Over por 3 segundos...");
+        }
 
+        // 2. Esperar 3 segundos
+        yield return new WaitForSeconds(3f);
+
+        // 3. Desactivar el panel de Game Over
+        if (gameOverPanel)
+        {
+            gameOverPanel.SetActive(false);
+        }
+
+        // 4. Activar los botones del Root
+        if (freeModeButtonsRoot)
+        {
+            freeModeButtonsRoot.SetActive(true);
+            freeModeButtonsRoot.transform.SetAsLastSibling();
+            Debug.Log("Panel ocultado. Botones activados.");
+        }
+    }
     private IEnumerator NotifyStoryModeAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
