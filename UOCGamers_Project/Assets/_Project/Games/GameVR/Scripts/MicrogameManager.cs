@@ -11,7 +11,7 @@ public class MicrogameManager : MonoBehaviour
     public static MicrogameManager Instance { get; private set; }
 
     [Header("Config")]
-    public float durationSeconds = 120f;
+    public float durationSeconds = 60f;
     public int startingLives = 3;
     public ThreeLaneSpawner[] spawners;
 

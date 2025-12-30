@@ -16,12 +16,12 @@ public class ThreeLaneSpawner : MonoBehaviour
     public float bullProbability = 0.6f;
 
     [Header("Spawn / Dificultad")]
-    public float startInterval = 1.2f;
-    public float minInterval = 0.5f;
-    public float difficultyRampTime = 120f;
-    public float maxSpawnTime = 120f;
-    public float baseSpeed = 6f;
-    public float speedIncrease = 2f;
+    public float startInterval = 1.1f;
+    public float minInterval = 0.35f;
+    public float difficultyRampTime = 45f;
+    public float maxSpawnTime = 60f;
+    public float baseSpeed = 7f;
+    public float speedIncrease = 7f;
     public float spawnDistance = 10f; // distancia delante del jugador
 
     [Header("Altura")]
@@ -73,12 +73,14 @@ public class ThreeLaneSpawner : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
-        elapsed = 0f;
         float timer = 0f;
+
+        float startTime = Time.time;
+        elapsed = Time.time - startTime;
 
         while (debugMode || MicrogameManager.Instance == null || MicrogameManager.Instance.IsRunning)
         {
-            elapsed += Time.deltaTime;
+            elapsed = Time.time - startTime;
             if (debugMode) timer += Time.deltaTime;
 
             // Rampa de dificultad
