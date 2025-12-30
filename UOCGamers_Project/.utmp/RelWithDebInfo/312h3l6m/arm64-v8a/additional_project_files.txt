@@ -1,0 +1,15 @@
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/GAToUnityCallbacks.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroEnd.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroHeaderBegin.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroSourceBegin.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAApplication.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGADebug.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAEvents.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAInput.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGASoftKeyboard.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGASoftKeyboardCallbacks.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGATypes.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAVersion.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGACallbacks.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAKeyEventCallbacks.h
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAMotionEventCallbacks.h
