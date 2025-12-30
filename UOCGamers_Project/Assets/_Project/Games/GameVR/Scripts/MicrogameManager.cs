@@ -190,9 +190,6 @@ public class MicrogameManager : MonoBehaviour
         if (musicSource != null && musicSource.isPlaying)
             musicSource.Stop();
 
-        // 🕶️ DESACTIVAR VR AL TERMINAR
-        StopVR();
-
         // Iniciamos la secuencia de espera para la UI
         StartCoroutine(ShowGameOverSequence());
 
@@ -229,6 +226,9 @@ public class MicrogameManager : MonoBehaviour
             freeModeButtonsRoot.transform.SetAsLastSibling();
             Debug.Log("Panel ocultado. Botones activados.");
         }
+
+        // 🕶️ DESACTIVAR VR AL TERMINAR
+        StopVR();
     }
     private IEnumerator NotifyStoryModeAfterDelay(float delay)
     {
