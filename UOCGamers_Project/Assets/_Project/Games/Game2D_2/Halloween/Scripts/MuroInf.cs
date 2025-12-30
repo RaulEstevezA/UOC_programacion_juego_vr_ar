@@ -121,8 +121,6 @@ public class MuroInferior : MonoBehaviour
             txtResultadoFinal.gameObject.SetActive(true);
             txtResultadoFinal.text = "RESULTADO\nPUNTOS OBTENIDOS: " + puntos;
         }
-
-        // Esperamos X segundos para que el jugador vea los puntos
         yield return new WaitForSecondsRealtime(3f); // ajusta 3f a lo que te parezca mejor
 
         // StoryModeController suma puntuación, avanza de paso y carga ModoHistoria
@@ -149,13 +147,9 @@ public class MuroInferior : MonoBehaviour
         {
             freeModeButtonsRoot.SetActive(true);
             freeModeButtonsRoot.transform.SetAsLastSibling();
-            Debug.Log("Botones activados y movidos al frente.");
+            
         }
-
-
-        // Esperamos un frame para que Unity los pinte antes de pausar
         yield return null;
-        
         Time.timeScale = 0.0001f;
     }
     public void Reintentar()
