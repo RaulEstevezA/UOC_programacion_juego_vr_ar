@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winPanel;        // panel de victoria FINAL
     [SerializeField] private GameObject gameOverPanel;   // panel de game over
 
+    [Header("UI Puntuacion (final)")]
+    [SerializeField] private TextMeshProUGUI winScoreText;       // TMP dentro del WinPanel
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;  // TMP dentro del GameOverPanel
+
+
     [Header("Botones GameOver (listeners)")]
     // Estos botones van DENTRO del gameOverPanel
     [SerializeField] private Button gameOverRestartButton;
@@ -180,6 +185,9 @@ public class GameManager : MonoBehaviour
     {
         int finalScore = puzzlesSolved * 10;
 
+        UpdateFinalScoreUI(finalScore);
+
+
         // --- MODO HISTORIA ---
         if (StoryModeController.Instance != null &&
             StoryModeController.Instance.storyModeActive)
@@ -239,6 +247,13 @@ public class GameManager : MonoBehaviour
         // Si QUIERES que Reiniciar sí se vea en historia, usa esto:
         // if (btnReiniciarGO) btnReiniciarGO.SetActive(true);
     }
+
+    private void UpdateFinalScoreUI(int score)
+    {
+        if (winScoreText) winScoreText.text = "Puntuación: " + score;
+        if (gameOverScoreText) gameOverScoreText.text = "Puntuación: " + score;
+    }
+
 
     private void UpdateHud()
     {
