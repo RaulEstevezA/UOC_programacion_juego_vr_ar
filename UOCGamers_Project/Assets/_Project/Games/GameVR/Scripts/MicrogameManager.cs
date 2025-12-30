@@ -27,7 +27,9 @@ public class MicrogameManager : MonoBehaviour
     [Header("Flujo (opcional)")]
     public string nextSceneName;
     public bool autoLoadNextOnContinue;
-
+    [Header("Botones")]
+    public GameObject freeModeButtonsRoot;
+    [SerializeField] private string menuSceneName = "Menu";
     public bool IsRunning { get; private set; }
     public bool IsGameOver { get; private set; }
     public int Score { get; private set; }
@@ -55,6 +57,7 @@ public class MicrogameManager : MonoBehaviour
         musicSource.spatialBlend = 0f;
         musicSource.Play();
         if (gameOverPanel) gameOverPanel.SetActive(false);
+        if (freeModeButtonsRoot) freeModeButtonsRoot.SetActive(false);
 
         // 🕶️ ACTIVAR VR AL ENTRAR AL MICROJUEGO
         StartCoroutine(StartVR());
@@ -189,6 +192,12 @@ public class MicrogameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
             if (finalScoreText) finalScoreText.text = $"Score: {Score}";
         }
+        if (freeModeButtonsRoot)
+        {
+            freeModeButtonsRoot.SetActive(true);
+            freeModeButtonsRoot.transform.SetAsLastSibling();
+            Debug.Log("FreeModeButtonsRoot ACTIVADO");
+        }
         if (musicSource != null && musicSource.isPlaying)
             musicSource.Stop();
         // 🕶️ DESACTIVAR VR AL TERMINAR
@@ -233,5 +242,16 @@ public class MicrogameManager : MonoBehaviour
     void OnDestroy()
     {
         StopVR();
+    }
+    public void Reintentar()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void VolverAlMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(menuSceneName);
     }
 }
