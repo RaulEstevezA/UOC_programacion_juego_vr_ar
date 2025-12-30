@@ -161,8 +161,15 @@ public class MuroInferior : MonoBehaviour
     public void VolverAlMenu()
     {
         Time.timeScale = 1f;
+
+        if (StoryModeController.Instance != null)
+        {
+            StoryModeController.Instance.ExitStoryMode();
+        }
+
         SceneManager.LoadScene(menuSceneName);
     }
+
 
 }
 
