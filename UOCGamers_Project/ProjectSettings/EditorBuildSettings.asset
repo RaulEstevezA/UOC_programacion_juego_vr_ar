@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/_Project/Menus/ScenasMenu/ModoLibre.unity
     guid: 0730463da1f4d874fb7bf29cd2dfa23a
   - enabled: 1
-    path: "Assets/_Project/Games/Game2D_1/Casta\xF1era/Scenes/Castanyera_scene.unity"
+    path: "Assets/_Project/Games/Game2D_1/Castan\u0303era/Scenes/Castanyera_scene.unity"
     guid: 246a266178977bb428f2b2601d012a3f
   - enabled: 1
     path: Assets/_Project/Games/Game2D_2/Halloween/Scenes/Halloween.unity

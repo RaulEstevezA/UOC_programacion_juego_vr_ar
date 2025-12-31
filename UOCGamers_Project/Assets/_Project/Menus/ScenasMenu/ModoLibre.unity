@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VR
+  m_text: SAN FERMIN VR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c00da2938b606ef47994dc741a338cc7, type: 2}
   m_sharedMaterial: {fileID: 8590651619398695131, guid: c00da2938b606ef47994dc741a338cc7, type: 2}
