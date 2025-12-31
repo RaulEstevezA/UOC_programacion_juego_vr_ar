@@ -1,28 +1,35 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class MuroInferior : MonoBehaviour
 {
     public GameObject Pelota;
     public GameObject txtGameOver;
     public TMP_Text txtTiempo;
-    public TMP_Text txtResultadoFinal; 
+    public TMP_Text txtResultadoFinal;
     public float tiempoMaximo = 60f;
 
     private float tiempoRestante;
     private bool juegoTerminado = false;
     private bool parpadeando = false;
+    [Header("Botones modo libre")]
+    [SerializeField] private GameObject freeModeButtonsRoot;
+    [SerializeField] private string menuSceneName = "Menu";
+
 
     private void Start()
     {
         tiempoRestante = tiempoMaximo;
         if (txtResultadoFinal != null)
-            txtResultadoFinal.gameObject.SetActive(false); 
+            txtResultadoFinal.gameObject.SetActive(false);
         if (txtGameOver != null)
             txtGameOver.SetActive(false);
         if (txtTiempo != null)
             txtTiempo.text = "Tiempo restante: " + Mathf.Ceil(tiempoRestante);
+        
     }
 
     private void Update()
@@ -78,43 +85,91 @@ public class MuroInferior : MonoBehaviour
         juegoTerminado = true;
         Pelota.SetActive(false);
 
-        if (txtGameOver != null)
-            txtGameOver.SetActive(true);
-
-        // Obtener la puntuación parcial de este minijuego
-        PuntuacionManager pm = PuntuacionManager.FindFirstObjectByType<PuntuacionManager>();
-
-        int puntosParciales = 0;
-        if (pm != null)
-        {
-            puntosParciales = pm.ObtenerPuntuacion(); // guardamos la puntuación parcial
-        }
-        StartCoroutine(MostrarResultadoTrasPausa(puntosParciales));
-
+        // 1. Obtenemos puntos
+        PuntuacionManager pm = FindFirstObjectByType<PuntuacionManager>();
+        int puntosParciales = (pm != null) ? pm.ObtenerPuntuacion() : 0;
         PuntosGlobales.puntosParciales = puntosParciales;
 
+        // 2. DETECCIÓN DE MODO (Con Log de control)
+        if (StoryModeController.Instance != null && StoryModeController.Instance.storyModeActive)
+        {
+            Debug.Log("<color=cyan>MODO DETECTADO: HISTORIA</color>");
 
-        // Puedes usar puntosParciales más adelante cuando crees la escena de resultados
-        // ResultadoUI.puntosDelJuego = puntosParciales;
+            if (txtGameOver != null) txtGameOver.SetActive(true);
+            StartCoroutine(FinJuegoModoHistoria(puntosParciales));
+        }
+        else
+        {
+            Debug.Log("<color=yellow>MODO DETECTADO: LIBRE (Activando secuencia de botones)</color>");
 
-        Time.timeScale = 0f; // pausa el juego
+            // Limpiamos cualquier rastro visual previo
+            if (txtGameOver != null) txtGameOver.SetActive(true); // Se apaga luego en la corrutina
+
+            // Iniciamos la corrutina que mostrará los botones
+            StartCoroutine(MostrarResultadoTrasPausa(puntosParciales));
+        }
     }
-    private IEnumerator MostrarResultadoTrasPausa(int puntos)
-    {
-        // Espera 3 segundos de reloj real aunque el juego esté pausado
-        yield return new WaitForSecondsRealtime(3f);
 
-        // Oculta Game Over
+    private IEnumerator FinJuegoModoHistoria(int puntos)
+    {
+        // ocultar el "GAME OVER" y mostrar solo el resultado
         if (txtGameOver != null)
             txtGameOver.SetActive(false);
 
-        // Muestra el texto de resultado con los puntos dinámicos
         if (txtResultadoFinal != null)
         {
             txtResultadoFinal.gameObject.SetActive(true);
             txtResultadoFinal.text = "RESULTADO\nPUNTOS OBTENIDOS: " + puntos;
         }
+        yield return new WaitForSecondsRealtime(3f); // ajusta 3f a lo que te parezca mejor
+
+        // StoryModeController suma puntuación, avanza de paso y carga ModoHistoria
+        StoryModeController.Instance.OnMiniGameFinished(puntos);
+    }
+
+    private IEnumerator MostrarResultadoTrasPausa(int puntos)
+    {
+        yield return new WaitForSecondsRealtime(2f);
+
+        if (txtGameOver != null) txtGameOver.SetActive(false);
+
+        if (txtResultadoFinal != null)
+        {
+            txtResultadoFinal.gameObject.SetActive(true);
+            txtResultadoFinal.text = "RESULTADO\nPUNTOS OBTENIDOS: " + puntos;
+        }
+
+        yield return new WaitForSecondsRealtime(3f);
+
+        if (txtResultadoFinal != null) txtResultadoFinal.gameObject.SetActive(false);
+
+        if (freeModeButtonsRoot)
+        {
+            freeModeButtonsRoot.SetActive(true);
+            freeModeButtonsRoot.transform.SetAsLastSibling();
+            
+        }
+        yield return null;
+        Time.timeScale = 0.0001f;
+    }
+    public void Reintentar()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void VolverAlMenu()
+    {
+        Time.timeScale = 1f;
+
+        if (StoryModeController.Instance != null)
+        {
+            StoryModeController.Instance.ExitStoryMode();
+        }
+
+        SceneManager.LoadScene(menuSceneName);
     }
 
 
 }
+

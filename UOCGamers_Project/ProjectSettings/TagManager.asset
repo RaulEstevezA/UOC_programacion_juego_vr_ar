@@ -17,6 +17,10 @@ TagManager:
   - PlayerHead
   - Chestnut
   - Rock
+  - LivesText
+  - ScoreText
+  - PlayerHitbox
+  - FreeModeButtonsRoot
   layers:
   - Default
   - TransparentFX

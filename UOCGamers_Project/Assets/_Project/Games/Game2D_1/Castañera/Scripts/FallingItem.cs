@@ -2,40 +2,37 @@
 
 public class FallingItem : MonoBehaviour
 {
-    [SerializeField] private float baseFallSpeed = 5f;   // antes: fallSpeed
+    [SerializeField] private float baseFallSpeed = 5f;
     [SerializeField] private string chestnutTag = "Chestnut";
     [SerializeField] private string rockTag = "Rock";
     [SerializeField] private string headTag = "PlayerHead";
     [SerializeField] private string groundTag = "Ground";
+
     [SerializeField] private AudioSource sfxSource;      // Fuente de sonido (Managers)
     [SerializeField] private AudioClip chestnutSfxClip;  // Sonido al recoger castaña
     [SerializeField] private AudioClip rockHitSfxClip;   // Sonido al golpear con una roca
 
     private float currentFallSpeed;
-    private float xKill;
+    private float yKill;
     private string myTag;
     private Camera cam;
 
     void Start()
     {
         cam = Camera.main;
-        xKill = cam.ViewportToWorldPoint(new Vector3(0.5f, -0.1f, 0f)).y;
+        yKill = cam.ViewportToWorldPoint(new Vector3(0.5f, -0.1f, 0f)).y;
 
         myTag = gameObject.tag;
-        currentFallSpeed = baseFallSpeed; // por defecto, 1x
+        currentFallSpeed = baseFallSpeed;
 
         if (sfxSource == null)
         {
             var manager = UnityEngine.Object.FindFirstObjectByType<CastanyeraGameManager>();
             if (manager != null)
-            {
                 sfxSource = manager.GetComponent<AudioSource>();
-            }
 
             if (sfxSource == null)
-            {
-                Debug.LogWarning("[FallingItem] No se encontro AudioForce Managers; El sonido de castaña no se reproducirá.");
-            }
+                Debug.LogWarning("[FallingItem] No se encontró AudioSource en CastanyeraGameManager; no se reproducirán SFX.");
         }
     }
 
@@ -45,10 +42,8 @@ public class FallingItem : MonoBehaviour
 
         transform.position += Vector3.down * currentFallSpeed * Time.deltaTime;
 
-        if (transform.position.y < xKill)
-        {
+        if (transform.position.y < yKill)
             Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -66,7 +61,6 @@ public class FallingItem : MonoBehaviour
                 // Reproduce Sonido
                 if (sfxSource != null && chestnutSfxClip != null)
                 {
-                    //Pequeña variación del Pitch ara no sonar siempre igual
                     float originalPitch = sfxSource.pitch;
                     sfxSource.pitch = Random.Range(0.95f, 1.05f);
                     sfxSource.PlayOneShot(chestnutSfxClip);
@@ -75,31 +69,32 @@ public class FallingItem : MonoBehaviour
             }
             else if (myTag == rockTag)
             {
-                // Roca → stun al jugador
+                // Siempre pierde vida si golpea la cabeza (aunque no encuentre el controller)
+                CastanyeraGameManager.Instance.PlayerHit();
+
+                // Stun al jugador
                 CastanyeraController controller = other.GetComponentInParent<CastanyeraController>();
                 if (controller != null)
                 {
-                    controller.ApplyHitStun(0.5f); // 0.5s de penalización
+                    controller.ApplyHitStun(0.5f);
+                }
 
-                    // Reproduce Sonido de Golpe
-                    if (sfxSource != null && rockHitSfxClip != null)
-                    {
-                        float originalPitch = sfxSource.pitch;
-                        sfxSource.pitch = Random.Range(0.95f, 1.05f);
-                        sfxSource.PlayOneShot(rockHitSfxClip);
-                        sfxSource.pitch = originalPitch;
-
-                    }
+                // Reproduce Sonido de Golpe
+                if (sfxSource != null && rockHitSfxClip != null)
+                {
+                    float originalPitch = sfxSource.pitch;
+                    sfxSource.pitch = Random.Range(0.95f, 1.05f);
+                    sfxSource.PlayOneShot(rockHitSfxClip);
+                    sfxSource.pitch = originalPitch;
                 }
             }
 
             // En ambos casos, el objeto se destruye al impactar
             Destroy(gameObject);
         }
-
-        // Si toca el suelo, también se destruye
-        if (other.CompareTag(groundTag))
+        else if (other.CompareTag(groundTag))
         {
+            // Si toca el suelo, también se destruye
             Destroy(gameObject);
         }
     }

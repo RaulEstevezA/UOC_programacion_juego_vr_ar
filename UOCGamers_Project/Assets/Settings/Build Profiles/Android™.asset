@@ -20,6 +20,24 @@ MonoBehaviour:
   m_Scenes:
   - m_enabled: 1
     m_path: Assets/_Project/Menus/ScenasMenu/SplashTeam.unity
+  - m_enabled: 1
+    m_path: Assets/_Project/Menus/ScenasMenu/Menu.unity
+  - m_enabled: 1
+    m_path: Assets/_Project/Menus/ScenasMenu/SettingsMenu.unity
+  - m_enabled: 1
+    m_path: Assets/_Project/Menus/ScenasMenu/ModoLibre.unity
+  - m_enabled: 1
+    m_path: Assets/_Project/Menus/ScenasMenu/ModoHistoria.unity
+  - m_enabled: 1
+    m_path: Assets/_Project/Games/Game2D_3/LuzDivina/Scenes/LuzDivina.unity
+  - m_enabled: 1
+    m_path: Assets/_Project/Games/Game2D_2/Halloween/Scenes/Halloween.unity
+  - m_enabled: 1
+    m_path: "Assets/_Project/Games/Game2D_1/Castan\u0303era/Scenes/Castanyera_scene.unity"
+  - m_enabled: 1
+    m_path: Assets/_Project/Menus/ScenasMenu/HistoriaFinal.unity
+  - m_enabled: 1
+    m_path: Assets/_Project/Games/GameVR/Scenes/BasicScene.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []

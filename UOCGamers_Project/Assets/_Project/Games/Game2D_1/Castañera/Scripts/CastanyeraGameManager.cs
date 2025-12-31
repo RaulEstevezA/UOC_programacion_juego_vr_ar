@@ -13,20 +13,30 @@ public class CastanyeraGameManager : MonoBehaviour
     [SerializeField] private TMP_Text finalScoreText;
 
     [Header("UI - Timer")]
-    [SerializeField] private TMP_Text timerText;          // ← Asigna el TextMeshPro del contador (Top-Right)
-    [SerializeField] private float gameDurationSeconds = 60f; // ← Duración total (por defecto 60s)
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private float gameDurationSeconds = 60f;
     [SerializeField] private Color normalTimerColor = Color.white;
     [SerializeField] private Color warningTimerColor = Color.red;
     [SerializeField] private float warningTime = 5f;
 
+    [Header("UI - Lives")]
+    [SerializeField] private LivesUI livesUI;
+    [SerializeField] private int maxLives = 2;
+
+    private int currentLives;
+
+    [Header("UI - GameOver Buttons (Solo Modo Libre)")]
+    [SerializeField] private GameObject freeModeButtonsRoot;
+    [SerializeField] private string menuSceneName = "Menu";
+
     [Header("Referencias opcionales")]
-    [SerializeField] private MonoBehaviour spawnerBehaviour;      // ← Arrastra tu Spawner (debe tener SetSpawningEnabled(bool))
-    [SerializeField] private MonoBehaviour playerControllerBehaviour; // ← Arrastra tu CastanyeraController (debe tener SetInputEnabled(bool))
+    [SerializeField] private MonoBehaviour spawnerBehaviour;
+    [SerializeField] private MonoBehaviour playerControllerBehaviour;
 
     [Header("Música de fondo")]
     [SerializeField] private AudioSource baseMusicSource;
     [SerializeField] private AudioSource intenseMusicSource;
-    [SerializeField] private float intenseStartTime = 15f;  // segundos restantes para activar música intensa
+    [SerializeField] private float intenseStartTime = 15f;
     [SerializeField] private float musicVolume = 0.6f;
     [SerializeField] private float musicFadeDuration = 2f;
 
@@ -49,19 +59,25 @@ public class CastanyeraGameManager : MonoBehaviour
         UpdateScoreUI();
         if (gameOverPanel) gameOverPanel.SetActive(false);
 
+        //Botones modo libre ocultos al inicio
+        if (freeModeButtonsRoot) freeModeButtonsRoot.SetActive(false);
+
         // Iniciar partida
-        remainingTime = Mathf.Max(1f, gameDurationSeconds); // evita valores 0/negativos
+        remainingTime = Mathf.Max(1f, gameDurationSeconds);
         isRunning = true;
         IsGameOver = false;
 
         UpdateTimerUI(remainingTime);
         if (timerText) timerText.color = normalTimerColor;
 
-        // Arranque de sistemas (si se han asignado)
+        // Inicialización vidas
+        currentLives = Mathf.Max(1, maxLives);
+        if (livesUI != null) livesUI.SetLives(currentLives);
+
+        // Arranque de sistemas
         SetSpawnerEnabled(true);
         SetPlayerInputEnabled(true);
 
-        // Música
         hasSwitchedToIntense = false;
 
         if (baseMusicSource != null)
@@ -88,17 +104,16 @@ public class CastanyeraGameManager : MonoBehaviour
 
         UpdateTimerUI(remainingTime);
 
-        // Cambio de música a intensa
+        // Activar música intensa
         if (!hasSwitchedToIntense && remainingTime <= intenseStartTime)
         {
             hasSwitchedToIntense = true;
             StartCoroutine(FadeToIntenseMusic());
         }
 
-        // Fin de partida al llegar a 0
         if (remainingTime <= 0f)
         {
-            EndGame(); // reutilizamos flujo de Game Over
+            EndGame();
         }
     }
 
@@ -109,6 +124,19 @@ public class CastanyeraGameManager : MonoBehaviour
         UpdateScoreUI();
     }
 
+    public void PlayerHit()
+    {
+        if (IsGameOver) return;
+
+        currentLives--;
+        if (livesUI != null) livesUI.SetLives(currentLives);
+
+        if (currentLives <= 0)
+        {
+            EndGame(); // reutiliza el mismo flujo (modo libre / historia)
+        }
+    }
+
     public void EndGame()
     {
         if (IsGameOver) return;
@@ -116,21 +144,38 @@ public class CastanyeraGameManager : MonoBehaviour
         IsGameOver = true;
         isRunning = false;
 
-        // Parar sistemas de juego
+        // Parar sistemas
         SetSpawnerEnabled(false);
         SetPlayerInputEnabled(false);
 
-        // pARAR MÚSICA
         StopMusic();
 
-        // Mostrar resultados
+        int finalScore = score;
+
+        //  MODO HISTORIA 
+        if (StoryModeController.Instance != null &&
+            StoryModeController.Instance.storyModeActive)
+        {
+            if (gameOverPanel) gameOverPanel.SetActive(true);
+            if (finalScoreText) finalScoreText.text = $"Castañas: {finalScore}";
+
+            StartCoroutine(EndGameStoryMode(finalScore));
+            return;
+        }
+
+        // MODO LIBRE 
         if (gameOverPanel) gameOverPanel.SetActive(true);
-        if (finalScoreText) finalScoreText.text = $"Castañas: {score}";
+        if (finalScoreText) finalScoreText.text = $"Castañas: {finalScore}";
+        if (freeModeButtonsRoot) freeModeButtonsRoot.SetActive(true);
     }
 
-    public void Restart()
+    private IEnumerator EndGameStoryMode(int finalScore)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Mostrar la puntuación 3s
+        yield return new WaitForSecondsRealtime(3f);
+
+        // Enviar al Story Mode
+        StoryModeController.Instance.OnMiniGameFinished(finalScore);
     }
 
     private void UpdateScoreUI()
@@ -142,27 +187,18 @@ public class CastanyeraGameManager : MonoBehaviour
     {
         if (!timerText) return;
 
-        // Ceil para mostrar 1:00 → 0:00 sin “saltar” a 0 antes de tiempo
         int total = Mathf.CeilToInt(timeSeconds);
         int minutes = total / 60;
         int seconds = total % 60;
         timerText.text = $"{minutes:0}:{seconds:00}";
 
-        // Color de aviso al final
-        if (timeSeconds <= warningTime)
-            timerText.color = warningTimerColor;
-        else
-            timerText.color = normalTimerColor;
-
+        timerText.color = timeSeconds <= warningTime ? warningTimerColor : normalTimerColor;
     }
 
-    // --- Helpers para no acoplar tipos concretos (evita dependencias fuertes) ---
     private void SetSpawnerEnabled(bool enabled)
     {
         if (spawnerBehaviour == null) return;
 
-        // Requiere que el componente tenga un método público:
-        // void SetSpawningEnabled(bool enabled)
         var method = spawnerBehaviour.GetType().GetMethod("SetSpawningEnabled");
         if (method != null) method.Invoke(spawnerBehaviour, new object[] { enabled });
     }
@@ -171,16 +207,13 @@ public class CastanyeraGameManager : MonoBehaviour
     {
         if (playerControllerBehaviour == null) return;
 
-        // Requiere que el componente tenga un método público:
-        // void SetInputEnabled(bool enabled)
         var method = playerControllerBehaviour.GetType().GetMethod("SetInputEnabled");
         if (method != null) method.Invoke(playerControllerBehaviour, new object[] { enabled });
     }
 
     private IEnumerator FadeToIntenseMusic()
     {
-        if (baseMusicSource == null || intenseMusicSource == null)
-            yield break;
+        if (baseMusicSource == null || intenseMusicSource == null) yield break;
 
         intenseMusicSource.loop = true;
         intenseMusicSource.volume = 0f;
@@ -209,5 +242,15 @@ public class CastanyeraGameManager : MonoBehaviour
     {
         if (baseMusicSource != null) baseMusicSource.Stop();
         if (intenseMusicSource != null) intenseMusicSource.Stop();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(menuSceneName);
     }
 }
