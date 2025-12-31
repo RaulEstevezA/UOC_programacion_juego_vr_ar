@@ -21,6 +21,7 @@ sysinfo.txt
 *.user
 *.userosscache
 *.sln.docstates
+UOCGamers_Project/UserSettings/
 
 # Cache de paquetes y Asset Store
 [Aa]ssets/AssetStoreTools*
@@ -45,3 +46,4 @@ build/
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+.vs/

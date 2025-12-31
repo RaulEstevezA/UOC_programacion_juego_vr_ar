@@ -1,0 +1,5 @@
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/.utmp/RelWithDebInfo/312h3l6m/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/.utmp/RelWithDebInfo/312h3l6m/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/.utmp/RelWithDebInfo/312h3l6m/arm64-v8a/GameActivity/CMakeFiles/game.dir
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/.utmp/RelWithDebInfo/312h3l6m/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+/Users/raulestevez/Documents/Repositorios/UOC_programacion_juego_vr_ar/UOCGamers_Project/.utmp/RelWithDebInfo/312h3l6m/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
