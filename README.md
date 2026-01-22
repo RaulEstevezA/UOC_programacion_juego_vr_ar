@@ -81,14 +81,6 @@ The companion repository contains the **AR game: Tio AR**:
 
 ---
 
-## Download APK
-
-The latest APK can be downloaded from the **Releases** section:
-
-- [Releases](../../releases)
-
----
-
 ## Team
 
 This project was developed by the **UOC Gamers** team:
